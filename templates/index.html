@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <div class="big-image">
+        <div class="overlay">
+            <div>
+                <h1 class="heading">fresh and delicious</h1>
+                <h4>from the beautiful pantry of his almighty's blessings</h4>
+                    <button class="button">
+                        <a href="{{url_for('menu')}}">
+                            Lets Dig Innn
+                        </a>
+                    </button>
+                </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="row">
+            <div class="col-md-6 box " style="background-image:url(../static/img/bofrot.jpg);">
+                <div class="overlay" >
+                    <h6 class="heading">explore</h6>
+                    <h4 style="text-align: center;">New and improved menu </h4>
+                </div>
+            </div>
+            <div class="col-md-6 box" style="background:url(../static/img/pattern2.jpg);">
+                <div class="overlay">
+                    <button class="branch-button">FIND A BRANCH NEAR ME</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" style="background-color: white;">
+    <div style="text-align: center; padding: 50px;">
+        <h4>ABOUT US</h4>
+        <h6>Incase you dont know Basillisa which is highly unlikely... we are a a family business that delivers food all around Accra and Tema. We have over  16 branches, with 1 million food options, and the best burger in the worldddd. Find a location and let us deliver to you.</h6>
+    </div>
+    </div>
+
+{% endblock %}
