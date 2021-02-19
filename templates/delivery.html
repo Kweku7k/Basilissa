@@ -1,5 +1,39 @@
 {% extends "base.html" %}
 
+{% block head %}
+<style type="text/css">
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 100vh;
+      /* The height is 400 pixels */
+      width: 100vw;
+      /* The width is the width of the web page */
+    }
+  </style>
+  <script>
+    // Initialize and add the map
+    function initMap() {
+      // The location of Uluru
+      const uluru = { lat: 5.738548696970146, lng: 0.03265251065119554 };
+
+
+      // The map, centered at Uluru
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: uluru,
+      });
+      // The marker, positioned at Uluru
+      const marker = new google.maps.Marker({
+        position: uluru,
+        map: map,
+        zoom: 4,
+      });
+    }
+  </script>
+{% endblock %}
+
+
+
 {% block body %}
 <div class="container">
     
@@ -23,13 +57,19 @@
     {{form.location (class="form-control", id="exampleInputEmail1")}}
 </div>
 
-<button onclick="getLocation()">Show</button>
-<div id="mapholder"></div>
+
 
 <div class="form-group">
     {{form.submit}}
 </div>
     </form>
+
+<div id="map" style="width: 80vw; height: 30vh; text-align: center;  margin: auto;"></div>
     </div>
 
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQbDoqr9mxC1QEEcWLsyjKg428R0YgeE&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
 {% endblock %}
