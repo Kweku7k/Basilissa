@@ -108,7 +108,7 @@ def next():
     api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
     phone = "0545977791" #SMS recepient"s phone number
     message = "Are we back on the grid?"
-    sender_id = "Tnsghana" #11 Characters maximum
+    sender_id = "Basilissa" #11 Characters maximum
     send_sms(api_key,phone,message,sender_id)
     return render_template('menu.html')
 
