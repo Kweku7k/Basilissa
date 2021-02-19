@@ -101,15 +101,6 @@ def send_sms(api_key,phone,message,sender_id):
     print (url)
 
 
-# @app.route('/login')
-# def login():
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         login(user, remember=true)
-#         return redirect(url_for('index'))
-#     return render_template('login.html',current_user=current_user )
-
-
 @app.route('/login', methods=['POST','GET'])
 def login():
     form = LoginForm()
