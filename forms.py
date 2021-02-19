@@ -24,6 +24,7 @@ class ItemForm(FlaskForm):
     category = SelectField('Category', choices=[('Pizza', 'Pizza'),('Chineese','Chineese'),('Cocktails','Cocktails'),('Shawarma','Shawarma'),('Chicken','Chicken'),('Rice','Rice')])
     submit = SubmitField('Submit')
     
-class LoginForm():
-    name = StringField('Name', validators=[DataRequired()])
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')

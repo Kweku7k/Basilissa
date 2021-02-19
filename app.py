@@ -122,8 +122,13 @@ def next():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash (f'New Item has been added','success')
-        return('Success')
+        user = User.query.filter_by(email = form.email.data).first()
+        if user:
+            flash (f'Login for ' + current_user.name ,'success')
+            return redirect(url_for('index'))
+            return('Success')
+        else:
+            flash (f'The account cant be found', 'danger')
     return render_template('login.html', form=form)
 
 
