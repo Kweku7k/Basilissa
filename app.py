@@ -17,7 +17,6 @@ login_manager = LoginManager(app)
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-from models import *
 @app.route('/')
 def index():
     return render_template('index.html', title = 'Basillisa')
@@ -25,8 +24,6 @@ def index():
 @app.route('/menu')
 def menu():
     return render_template('menu.html')
-
-
 
 @app.route('/delivery', methods=['POST','GET'])
 def delivery():
