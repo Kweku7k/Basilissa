@@ -26,13 +26,7 @@ def index():
 def menu():
     return render_template('menu.html')
 
-@app.route('/login')
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        login(user, remember=true)
-        return redirect(url_for('index'))
-    return render_template('login.html',current_user=current_user )
+
 
 @app.route('/delivery', methods=['POST','GET'])
 def delivery():
@@ -42,7 +36,12 @@ def delivery():
         form.name.data = current_user.name
         form.phone.data = current_user.phone
     if form.validate_on_submit():
-       print('Kpeee') 
+        api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
+        phone = "0545977791" #SMS recepient"s phone number
+        message = "You have recieved a new order. please check your dashboard to confirm."
+        sender_id = "Basilissa" #11 Characters maximum
+        send_sms(api_key,phone,message,sender_id)
+
     return render_template('delivery.html', form=form)
 
 @app.route('/maps')
@@ -113,6 +112,22 @@ def next():
     send_sms(api_key,phone,message,sender_id)
     return render_template('menu.html')
 
+# @app.route('/login')
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         login(user, remember=true)
+#         return redirect(url_for('index'))
+#     return render_template('login.html',current_user=current_user )
+
+
+@app.route('/login', methods=['POST','GET'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        flash (f'New Item has been added','success')
+        return('Success')
+    return render_template('login.html', form=form)
 
 
 if __name__ == '__main__':
