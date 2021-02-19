@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, flash, request
 from forms import Registration, Delivery, ItemForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,UserMixin,LoginManager
-from models import *
 import urllib.request, urllib.parse
 import urllib
 
@@ -13,6 +12,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
+from models import *
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
