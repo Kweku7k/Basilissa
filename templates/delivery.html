@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    
+<form action="" method="POST">
+{{form.hidden_tag()}}
+    
+<h1>Delivery Details </h1>
+<hr>
+<div class="form-group">
+    {{form.name.label}}
+    {{form.name (class="form-control", id="exampleInputEmail1")}}
+</div>
+
+<div class="form-group">
+    {{form.phone.label}}
+    {{form.phone (class="form-control", id="exampleInputEmail1")}}
+</div>
+
+<div class="form-group">
+    {{form.location.label}}
+    {{form.location (class="form-control", id="exampleInputEmail1")}}
+</div>
+
+<button onclick="getLocation()">Show</button>
+<div id="mapholder"></div>
+
+<div class="form-group">
+    {{form.submit}}
+</div>
+    </form>
+    </div>
+
+{% endblock %}

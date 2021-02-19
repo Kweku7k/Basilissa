@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="container">
+        <h1> Your Cart </h1>
+
+        <hr>
+   <h6 id="result">Up</h6>
+    <div class="flex" style="display: flex; ">
+        <div style="display: flex;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;">
+                <img style="width: 100%;" src="../static/img/bofrot.jpg">
+            </div>
+        </div>
+        <div style="width: 100%; margin-left: 5vw;">
+            <h4 style="margin-left:0 ;">Pizza</h4>
+            <div style="display: flex; justify-content: space-between;">
+                <h5 class="text-muted" style="margin-top: auto; margin-bottom: auto;" >Ghc 30.00</h5>
+                <div class="controls" style="display: flex; background-color:yellow; padding: 10px; border-radius: 20px; width: 30vw; justify-content: space-around;">
+                    <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-plus" onclick="increase(event)"></i>
+                    <h4 style="margin-top: auto; margin-bottom: auto;" class="quantity">1</h4>
+                    <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-minus"
+                    onclick="decrease(event)"></i>
+                 </div>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <div style="text-align: center; margin-top: 10vh;">
+        <a href="{{url_for('delivery')}}">
+            <button class="order-button">Proceed</button>
+        </a>
+    </div>
+
+
+</div>
+
+<script>
+    // Check browser support
+    if (typeof(Storage) !== "undefined") {
+      // Store
+      // Retrieve
+      document.getElementById("result").innerHTML = localStorage.getItem("cart");
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+    }
+    </script>
+
+
+{% endblock %}

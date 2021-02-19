@@ -11,50 +11,23 @@
 
 <br>
 <!-- <div class="container"> -->
-<div class="row" style="justify-content: space-around; padding-bottom: 10%;">
+    
+    <div class="row" style="justify-content: space-around; padding-bottom: 10%;">
+        {% for item in items %}
     <div class="col-md-3" style="text-align: center;">
         <img width="70%" src="../static/img/pizza.png">
         <br>
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
+        <h6 id="id" class="id">{{item.id}}</h6>
+        <h4 class="menu-head">{{item.name}}</h4>
+        <h6 class="menu-explore">{{item.description}} </h6>
+        <button class="button" onclick="addToCart(event)">Add to cart</button>
+        <div class="white-space"></div>
     </div>
-
-    <div class="col-md-3" style="text-align: center;">
-        <img width="70%" src="../static/img/pizza.png">
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
-    </div>
-
-    <div class="col-md-3" style="text-align: center;">
-        <img width="70%" src="../static/img/pizza.png">
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
-    </div>
+    {% endfor %}
+    <button style="position: fixed; bottom: 20px; " class="hover-button" onclick="GoToCart()">
+        <a style="text-decoration: none; color: black; font-weight: bold;"href="{{url_for('cart')}}">
+            Go to cart
+        </a>
+        </button>
 </div>
-
-<div class="row" style="justify-content: space-around;">
-    <div class="col-md-3" style="text-align: center;">
-        <img width="70%" src="../static/img/pizza.png">
-        <br>
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
-    </div>
-
-    <div class="col-md-3" style="text-align: center;">
-        <img width="70%" src="../static/img/pizza.png">
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
-    </div>
-
-    <div class="col-md-3" style="text-align: center;">
-        <img width="70%" src="../static/img/pizza.png">
-        <h4 class="menu-head">Double Deckered Pizza</h4>
-        <h6 class="menu-explore">Cheese, Grease, Ice Cream, Jolly Juice and A pint of our secret sauce. </h6>
-    </div>
-</div>
-<!-- </div> -->
-<br>
-
-
-
 {% endblock %}

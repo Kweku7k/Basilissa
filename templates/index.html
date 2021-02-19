@@ -8,7 +8,7 @@
                 <h1 class="heading">fresh and delicious</h1>
                 <h4>from the beautiful pantry of his almighty's blessings</h4>
                     <button class="button">
-                        <a href="{{url_for('menu')}}">
+                        <a href="{{url_for('menu')}}" style="color: black;">
                             Lets Dig Innn
                         </a>
                     </button>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-6 box" style="background:url(../static/img/pattern2.jpg);">
                 <div class="overlay">
-                    <button class="branch-button">FIND A BRANCH NEAR ME</button>
+                    <button class="branch-button" onclick="getLocation()">FIND A BRANCH NEAR ME</button>
                 </div>
             </div>
         </div>

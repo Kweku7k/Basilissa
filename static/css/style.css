@@ -94,6 +94,15 @@
     background-color: black;
 }
 
+.hover-button{
+    background-color: rgb(243, 207, 0);
+    color: rgb(0, 0, 0);
+    padding: 20px 40px;
+    border: none;
+    border-radius: 20px;
+    width: 80%;
+    
+}
 
 .branch-button{
     border: none;
@@ -101,4 +110,18 @@
     color: black;
     font-weight: bold;
     background-color: yellow;
+}
+
+.order-button{
+    border-radius: 10px;
+    width: 70%;
+    background-color: black;
+    color: yellow;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.white-space{
+    height: 10vh;
+    width: 100%;
 }
