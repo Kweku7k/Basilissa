@@ -21,8 +21,9 @@ def load_user(user_id):
 def index():
     return render_template('index.html', title = 'Basillisa')
 
-@app.route('/menu')
-def menu():
+@app.route('/menu/<string:location>')
+def menu(location):
+    print(location)
     return render_template('menu.html')
 
 @app.route('/delivery', methods=['POST','GET'])
@@ -43,7 +44,7 @@ def delivery():
 
 @app.route('/maps')
 def maps():
-    return render_template('maps.html')
+    return render_template('maps copy.html')
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -101,6 +102,28 @@ def send_sms(api_key,phone,message,sender_id):
     print (url)
 
 
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+
+    projectpath = request.form['projectFilepath']
+    # orders = []
+    # orders.append(projectpath)
+    print(projectpath)
+    items = []
+    new = []
+    piw = projectpath.replace(',', '')
+    print ("final " + piw)
+    for x in piw:
+        x = int(x)
+        item = Item.query.filter_by(id = x).first()
+        items.append(item)
+        print(item)
+        print (x)
+        new.append(x)
+    print(new)
+    return render_template('cart.html', items = items)
+    
+
 @app.route('/login', methods=['POST','GET'])
 def login():
     form = LoginForm()
@@ -109,7 +132,7 @@ def login():
         if user:
             flash (f'Login for ' + current_user.name ,'success')
             return redirect(url_for('index'))
-            return('Success')
+            
         else:
             flash (f'The account cant be found', 'danger')
     return render_template('login.html', form=form)

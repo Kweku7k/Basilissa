@@ -15,7 +15,7 @@ console.log(order)
 function GoToCart(){
   console.log(order)
   localStorage.setItem("cart", order);
-
+  document.getElementById('storage').value = order
 }
 
 function increase(event){

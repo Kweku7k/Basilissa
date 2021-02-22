@@ -32,6 +32,8 @@
         const marker = new google.maps.Marker({
           position: com25,
           map: map,
+          // icon: "https://blog.logomyway.com/wp-content/uploads/2020/09/KFC-logo.jpg",
+          url: 'http://www.google.com/',
           zoom: 4,
         });
 
@@ -41,6 +43,10 @@
           zoom: 4,
         });
         
+
+      google.maps.event.addListener(marker, 'click', function() {
+      window.location.href = marker.url;
+    });
       }
     </script>
   </head>
@@ -51,11 +57,13 @@
     </div>
 <!-- <div class="overlay"> -->
     <div class="locations">
+      <a href="{{url_for('menu', location="Dansoman")}}">
       <div class="bar">
         <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
         <h4>Basillisa Dansoman</h4>
-        <i class="fas fa-angle-right"></i>
+        <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
       </div>
+      </a>
       <div class="bar">
         <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
         <h4>Basillisa Dansoman</h4>

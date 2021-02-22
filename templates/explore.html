@@ -14,20 +14,26 @@
     
     <div class="row" style="justify-content: space-around; padding-bottom: 10%;">
 
+
+        {% for item in items %}
     <div class="col-md-3" style="text-align: center;">
         <img width="70%" src="../static/img/pizza.png">
         <br>
-        <h6 id="id" class="id" style="display: none;">1</h6>
-        <h4 class="menu-head">Pizza</h4>
-        <h6 class="menu-explore">Everything Nice </h6>
+        <h6 id="id" class="id" style="display: none;">{{item.id}}</h6>
+        <h4 class="menu-head">{{item.name}}</h4>
+        <h6 class="menu-explore">{{item.description}} </h6>
         <button class="button" onclick="addToCart(event)">Add to cart</button>
         <div class="white-space"></div>
     </div>
 
-    <button style="position: fixed; bottom: 20px; " class="hover-button" onclick="GoToCart()">
-        <a style="text-decoration: none; color: black; font-weight: bold;"href="{{url_for('cart')}}">
-            Go to cart
-        </a>
-        </button>
+    {% endfor %}
+
+    <div>
+
+    <form action="{{ url_for('handle_data') }}" method="post">
+        <input style="display: none;" id="storage" type="text" name="projectFilepath">
+        <button type="submit" style="position: fixed; bottom: 20px; text-decoration: none; color: black; font-weight: bold; " class="hover-button" onclick="GoToCart()">Go to cart</button>
+    </form>
+</div>
 </div>
 {% endblock %}

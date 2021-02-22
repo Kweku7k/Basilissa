@@ -6,7 +6,12 @@
         <h1> Your Cart </h1>
 
         <hr>
-   <h6 id="result">Up</h6>
+
+        {% for item in items %}
+            <h4>{{item.id}}</h4>
+        {% endfor %}
+   <h6 id="result"></h6>
+   
     <div class="flex" style="display: flex; ">
         <div style="display: flex;">
             <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;">
@@ -31,6 +36,7 @@
 
     <div style="text-align: center; margin-top: 10vh;">
         <!-- <a href="{{url_for('delivery')}}"> -->
+            <h6 id="storage">ow</h6>
             <button class="order-button" onclick="GoToCart()">Proceed</button>
         <!-- </a> -->
     </div>
