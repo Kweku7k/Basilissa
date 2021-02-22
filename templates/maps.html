@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Add Map</title>
+    <title>Map</title>
 
+    <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../static/css/style.css">
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
@@ -16,20 +19,28 @@
       // Initialize and add the map
       function initMap() {
         // The location of Uluru
-        const uluru = { lat: 5.738548696970146, lng: 0.03265251065119554 };
+        const com25 = { lat: 5.738548696970146, lng: 0.03265251065119554 };
+        const hroad = { lat: 5.651568283023563, lng: -0.012291229964026231 };
 
 
         // The map, centered at Uluru
         const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 15,
-          center: uluru,
+          zoom: 12,
+          center: com25,
         });
         // The marker, positioned at Uluru
         const marker = new google.maps.Marker({
-          position: uluru,
+          position: com25,
           map: map,
           zoom: 4,
         });
+
+        const newmarker = new google.maps.Marker({
+          position: hroad,
+          map: map,
+          zoom: 4,
+        });
+        
       }
     </script>
   </head>
@@ -37,6 +48,19 @@
     <!-- <h3>My Google Maps Demo</h3> -->
     <!--The div element for the map -->
     <div id="map">
+    </div>
+<!-- <div class="overlay"> -->
+    <div class="locations">
+      <div class="bar">
+        <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
+        <h4>Basillisa Dansoman</h4>
+        <i class="fas fa-angle-right"></i>
+      </div>
+      <div class="bar">
+        <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
+        <h4>Basillisa Dansoman</h4>
+      </div>
+    </div>
     </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script

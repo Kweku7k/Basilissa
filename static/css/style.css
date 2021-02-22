@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: 50% 50%;
     background-image: url(../img/hero.jpg);
-    background-color:red ;
+    background-color:yellow ;
 }
 
 .row{
@@ -70,7 +70,7 @@
     width: 100%;
     position: relative;
     background-size: cover;
-    background-color:red;
+    background-color:yellow;
 }
 
 .heading{
@@ -104,6 +104,24 @@
     
 }
 
+
+.carousel-inner img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-inner{
+    height: 100vh;
+    width: auto;
+    overflow: hidden;
+}
+
+.carousel-item{
+    height: 100vh;
+
+}
+
 .branch-button{
     border: none;
     padding: 20px;
@@ -124,4 +142,30 @@
 .white-space{
     height: 10vh;
     width: 100%;
+}
+
+
+.bar{
+    display: flex;
+}
+
+.locations{
+    position: fixed;
+    bottom: 10px;
+    background-color: white;
+    border: none;
+    border-radius:20px;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bar{
+    display: flex;
+}
+
+.bar i{
+    margin-right: 10px;
 }
