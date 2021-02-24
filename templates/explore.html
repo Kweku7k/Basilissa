@@ -12,11 +12,11 @@
 <br>
 <!-- <div class="container"> -->
     
-    <div class="row" style="justify-content: space-around; padding-bottom: 10%;">
+    <div class="row" >
 
 
         {% for item in items %}
-    <div class="col-md-3" style="text-align: center;">
+    <div class="col-md-4" style="text-align: center;">
         <img width="70%" src="../static/img/pizza.png">
         <br>
         <h6 id="id" class="id" style="display: none;">{{item.id}}</h6>
@@ -28,12 +28,12 @@
 
     {% endfor %}
 
-    <div>
+</div>
+    <div style="position: fixed; bottom: 20px; text-align: center;left: 50%; transform: translateX(-50%); width: 80%;">
 
     <form action="{{ url_for('handle_data') }}" method="post">
         <input style="display: none;" id="storage" type="text" name="projectFilepath">
-        <button type="submit" style="position: fixed; bottom: 20px; text-decoration: none; color: black; font-weight: bold; " class="hover-button" onclick="GoToCart()">Go to cart</button>
+        <button type="submit" style="text-decoration: none; color: black; font-weight: bold; " class="hover-button" onclick="GoToCart()">Go to cart</button>
     </form>
-</div>
 </div>
 {% endblock %}

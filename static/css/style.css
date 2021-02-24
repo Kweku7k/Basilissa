@@ -94,13 +94,17 @@
     background-color: black;
 }
 
+.mystyle{
+    background-color: green;
+}
+
 .hover-button{
     background-color: rgb(243, 207, 0);
     color: rgb(0, 0, 0);
     padding: 20px 40px;
     border: none;
     border-radius: 20px;
-    width: 80%;
+    width: 100%;
     
 }
 

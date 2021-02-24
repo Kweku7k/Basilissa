@@ -3,9 +3,12 @@ function addToCart(event){
 button = event.target
 holder = button.parentElement
 id = holder.getElementsByClassName('id')[0].innerText
-button.style.background = "black"
-button.innerText = "Added To Cart"
-button.style.color = "yellow"
+if (button.style.backgroundColor = "yellow"){
+  button.classList.toggle("mystyle");
+}
+// button.style.background = "black"
+// button.innerText = "Added To Cart"
+// button.style.color = "yellow"
 console.log(button)
 console.log(id)
 order.push(parseInt(id))
@@ -16,6 +19,11 @@ function GoToCart(){
   console.log(order)
   localStorage.setItem("cart", order);
   document.getElementById('storage').value = order
+}
+
+function myFunction() {
+  var element = document.getElementsByClassName("button")[0];
+  element.classList.toggle("mystyle");
 }
 
 function increase(event){

@@ -24,7 +24,7 @@ def index():
 @app.route('/menu/<string:location>')
 def menu(location):
     print(location)
-    return render_template('menu.html')
+    return render_template('menu.html', location=location)
 
 @app.route('/delivery', methods=['POST','GET'])
 def delivery():
