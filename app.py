@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,UserMixin,LoginManager
 import urllib.request, urllib.parse
 import urllib
-from models import *
 
 
 app = Flask(__name__)
@@ -12,6 +11,7 @@ app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
+from models import *
 
 @login_manager.user_loader
 def load_user(user_id):
