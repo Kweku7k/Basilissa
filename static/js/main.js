@@ -52,6 +52,31 @@ function GoToCart(m_array){
   document.getElementById('storage').value = m_array
 }
 
+function handle_data(){
+  var finalorder = []
+  var card = document.getElementsByClassName('flex')
+  console.log(card)
+  for (i=0; i< card.length; i++){
+    console.log(card[i])
+    cart_id = card[i].getElementsByClassName('cart-id')[0].innerText
+    cart_quantity = card[i].getElementsByClassName('quantity')[0].innerText
+    cart_name = card[i].getElementsByClassName('cart_name')[0].innerText
+    console.log(cart_id)
+    console.log(cart_quantity)
+    var order = {
+      itemid : cart_id,
+      itemquantity : cart_quantity,
+      itemname: cart_name
+    };
+    finalorder.push(order)
+    console.log(finalorder)
+  }
+}
+
+function ShowSummary(){
+
+}
+
 function myFunction() {
   var element = document.getElementsByClassName("button")[0];
   element.classList.toggle("mystyle");
