@@ -13,11 +13,11 @@
                 <img style="width: 100%;" src="../static/img/bofrot.jpg">
             </div>
         </div>
-        <div style="width: 100%; margin-left: 5vw;">
-            <h6 class="cart-id" id="cart_id">{{item.id}}</h6>
+        <div style="width: 100%; margin-left: 5vw; margin-top: 10px;">
+            <h6 class="cart-id" id="cart_id" style="display: none;">{{item.id}}</h6>
             <h4 style="margin-left:0 ;" class="cart_name">{{item.name}}</h4>
             <div style="display: flex; justify-content: space-between;">
-                <h5 class="text-muted" style="margin-top: auto; margin-bottom: auto;" >Ghc 30.00</h5>
+                <h5 class="text-muted" style="margin-top: auto; margin-bottom: auto;" >Ghc {{item.price}}</h5>
                 <div class="controls" style="display: flex; background-color:yellow; padding: 10px; border-radius: 20px; width: 30vw; justify-content: space-around;">
                     <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-plus" onclick="increase(event)"></i>
                     <h4 style="margin-top: auto; margin-bottom: auto;" class="quantity">1</h4>
@@ -26,19 +26,16 @@
                  </div>
             </div>
         </div>
-
-       
     </div>
     {% endfor %}
 
-
     
-
+    
     <div style="text-align: center; margin-top: 10vh;">
-        <!-- <a href="{{url_for('delivery')}}"> -->
-            <h6 id="storage">ow</h6>
-            <button class="order-button" onclick="handle_data()">Proceed</button>
-        <!-- </a> -->
+        <form action="{{ url_for('summary') }}" method="POST">
+            <input style="display: show;" id="cart" type="text" name="cart">
+            <button type="submit" style="text-decoration: none; color: black; font-weight: bold; " class="hover-button" onclick="handle_data()">Proceed</button>
+        </form>
     </div>
 
 

@@ -70,6 +70,9 @@ function handle_data(){
     };
     finalorder.push(order)
     console.log(finalorder)
+    forder = JSON.stringify(finalorder)
+    document.getElementById('cart').value = forder
+    console.log(document.getElementById('cart').value)
   }
 }
 

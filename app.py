@@ -1,17 +1,17 @@
 from flask import Flask, render_template, redirect, url_for, flash, request
 from forms import Registration, Delivery, ItemForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import login_user,logout_user,current_user,UserMixin,LoginManager
+from flask_login import login_user,logout_user,current_user,LoginManager
 import urllib.request, urllib.parse
 import urllib
 from models import *
-
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -25,6 +25,18 @@ def index():
 def menu(location):
     print(location)
     return render_template('menu.html', location=location)
+
+@app.route("/summary", methods=['POST','GET'])
+def summary():
+    cart = request.form['cart']
+    print(cart)
+    api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
+    phone = "0545977791" #SMS recepient"s phone number
+    message = "You have recieved a new order. please check your dashboard to confirm."
+    sender_id = "Basilissa" #11 Characters maximum
+    send_sms(api_key,phone,message,sender_id)
+    return render_template('summary.html') 
+
 
 @app.route('/delivery', methods=['POST','GET'])
 def delivery():
@@ -108,10 +120,7 @@ def send_sms(api_key,phone,message,sender_id):
 
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
-
     projectpath = request.form['projectFilepath']
-    # orders = []
-    # orders.append(projectpath)
     print(projectpath)
     items = []
     new = []
