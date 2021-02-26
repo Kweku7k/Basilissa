@@ -25,27 +25,31 @@ if (button.style.color !== 'black'){
 
 function done(){
   button = document.getElementsByClassName('button');
+  var finalarray = []
   for (i = 0; i < button.length; i++) {
     if(button[i].classList.contains('mystyle')){
       var card = button[i].parentElement
       var id = card.getElementsByClassName('id')[0].innerText
       console.log(id)
+      finalarray.push(id)
+      console.log(finalarray)
     }
     else{
       console.log('lol')
       console.log(document.getElementsByClassName('button')[i].style.color)
     }
   }
+  GoToCart(finalarray)
   // console.log(button)
   // if (button[1].classList.contains('button')){
   //   console.log('kaish')
   // }
 }
 
-function GoToCart(){
-  console.log(order)
-  localStorage.setItem("cart", order);
-  document.getElementById('storage').value = order
+function GoToCart(m_array){
+  console.log(m_array)
+  localStorage.setItem("cart", m_array);
+  document.getElementById('storage').value = m_array
 }
 
 function myFunction() {
