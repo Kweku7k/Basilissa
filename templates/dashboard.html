@@ -6,23 +6,54 @@
         <div class="col-md-3">
             <div class="block">
                 <h4>Total Orders</h4>
-                <h6>30</h6>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6 class="text-muted">Last Updated: Right Now</h6>
             </div>
         </div>
         <div class="col-md-3">
             <div class="block">
-
+                <h4>Available Items</h4>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6 class="text-muted">Last Updated: Right Now</h6>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="block">
+            <div class="block" style="background-color: red; color: white;">
+                <h4>Restock Now!</h4>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6>Last Updated: Right Now</h6>
 
             </div>
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: 5%;">
       <div id="curve_chart" class="curve_chart"></div>
+    </div>
+
+    <div class="row" style="margin-top: 5%;">
+        <div class="col-md-3">
+            <div class="block">
+                <h4>Total Orders</h4>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6 class="text-muted">Last Updated: Right Now</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block">
+                <h4>Available Items</h4>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6 class="text-muted">Last Updated: Right Now</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block" style="background-color: red; color: white;">
+                <h4>Restock Now!</h4>
+                <h1 style="font-weight: bold;">30</h1>
+                <h6>Last Updated: Right Now</h6>
+
+            </div>
+        </div>
     </div>
 </div>
 
@@ -33,15 +64,18 @@
   
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2004',  1000,      400],
-            ['2005',  1170,      460],
-            ['2006',  660,       1120],
-            ['2007',  1030,      540]
+            ['Day', 'Users', 'Sales'],
+            ['Mon',  1000,      400],
+            ['Tue',  1170,      460],
+            ['Wed',  660,       1120],
+            ['Thur',  1030,      540],
+            ['Fri',  1030,      540],
+            ['Sat',  1030,      540],
+            ['Sun',  1030,      540]
           ]);
   
           var options = {
-            title: 'Company Performance',
+            title: 'Weekly Peformance',
             curveType: 'function',
             legend: { position: 'bottom' }
           };

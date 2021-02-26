@@ -95,17 +95,22 @@
 }
 
 .block{
-    background: tomato;
+    background: rgb(255, 255, 255);
     width: auto;
     height: 20vh;
     border-radius: 20px;
+    padding: 20px;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
 }
 
 .curve_chart{
-    width: auto;
+    width: 80%;
     height: auto;
-    background-color: tomato;
-    border: 5px solid tomato;
+    /* background-color: tomato; */
+    /* border: 8px solid tomato; */
+    border-radius:10px;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.12);
+
 }
 
 .mystyle{

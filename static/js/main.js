@@ -26,14 +26,20 @@ if (button.style.color !== 'black'){
 function done(){
   button = document.getElementsByClassName('button');
   for (i = 0; i < button.length; i++) {
-    if(button[i].style.backgroundColor == "green"){
-      console.log('green')
+    if(button[i].classList.contains('mystyle')){
+      var card = button[i].parentElement
+      var id = card.getElementsByClassName('id')[0].innerText
+      console.log(id)
     }
     else{
       console.log('lol')
       console.log(document.getElementsByClassName('button')[i].style.color)
     }
   }
+  // console.log(button)
+  // if (button[1].classList.contains('button')){
+  //   console.log('kaish')
+  // }
 }
 
 function GoToCart(){
