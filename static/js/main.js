@@ -1,18 +1,39 @@
+
+
+// There are 2 ways i can go about this... 
+// 1.Loop through for all the coloured background
+// 2.Append color when clicked...
+// Personally, I like 1.
+
 order = []
 function addToCart(event){
 button = event.target
 holder = button.parentElement
 id = holder.getElementsByClassName('id')[0].innerText
-if (button.style.backgroundColor = "yellow"){
-  button.classList.toggle("mystyle");
+button.classList.toggle("mystyle");
+console.log(holder)
+if (button.style.color !== 'black'){
+  console.log(button)
+  console.log(id)
+  order.push(parseInt(id))
+  console.log(order)
 }
 // button.style.background = "black"
 // button.innerText = "Added To Cart"
 // button.style.color = "yellow"
-console.log(button)
-console.log(id)
-order.push(parseInt(id))
-console.log(order)
+}
+
+function done(){
+  button = document.getElementsByClassName('button');
+  for (i = 0; i < button.length; i++) {
+    if(button[i].style.backgroundColor == "green"){
+      console.log('green')
+    }
+    else{
+      console.log('lol')
+      console.log(document.getElementsByClassName('button')[i].style.color)
+    }
+  }
 }
 
 function GoToCart(){

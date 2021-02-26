@@ -1,0 +1,54 @@
+{% extends "base.html" %} 
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="block">
+                <h4>Total Orders</h4>
+                <h6>30</h6>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block">
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="block">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div id="curve_chart" class="curve_chart"></div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+  
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2004',  1000,      400],
+            ['2005',  1170,      460],
+            ['2006',  660,       1120],
+            ['2007',  1030,      540]
+          ]);
+  
+          var options = {
+            title: 'Company Performance',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+          };
+  
+          var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+  
+          chart.draw(data, options);
+        }
+      </script>
+{% endblock %}

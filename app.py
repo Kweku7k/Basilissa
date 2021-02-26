@@ -46,6 +46,10 @@ def delivery():
 def maps():
     return render_template('maps copy.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     form = Registration()

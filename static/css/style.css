@@ -94,8 +94,23 @@
     background-color: black;
 }
 
+.block{
+    background: tomato;
+    width: auto;
+    height: 20vh;
+    border-radius: 20px;
+}
+
+.curve_chart{
+    width: auto;
+    height: auto;
+    background-color: tomato;
+    border: 5px solid tomato;
+}
+
 .mystyle{
     background-color: green;
+    color: white;
 }
 
 .hover-button{
