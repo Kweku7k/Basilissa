@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, SelectField
 from wtforms.validators import DataRequired, Email, Length, EqualTo, ValidationError
 from flask_wtf.file import FileField, FileAllowed
+from wtforms.widgets import TextArea
 
 class Registration(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
@@ -15,6 +16,7 @@ class Delivery(FlaskForm):
     phone = StringField('Phone', validators=[DataRequired()])
     location = StringField('Location', validators=[DataRequired()])
     cart = StringField('Cart', validators=[DataRequired()])
+    notes = StringField('Notes', widget=TextArea())
     submit = SubmitField('Place Order')
 
 class ItemForm(FlaskForm):

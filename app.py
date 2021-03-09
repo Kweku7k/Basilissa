@@ -63,7 +63,7 @@ def delivery():
         form.phone.data = current_user.phone
     if form.validate_on_submit():
         api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
-        phone = "0545977791" #SMS recepient"s phone number
+        phone = "0249411910" #SMS recepient"s phone number
         message = "You have recieved a new order. please check your dashboard to confirm."
         sender_id = "Basilissa" #11 Characters maximum
         send_sms(api_key,phone,message,sender_id)

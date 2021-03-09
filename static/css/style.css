@@ -183,7 +183,25 @@
 
 .bar{
     display: flex;
+    margin: 20px auto;
 }
+
+
+.bar h1{
+    font-family: sans-serif; 
+    margin-top:auto; 
+    margin-bottom: auto;
+}
+
+.btn{
+    color: black;
+    border: none;
+    padding: 20px;
+    background-color: yellow;
+    font-size: 40px;
+}
+
+
 
 .locations{
     position: fixed;
@@ -191,7 +209,7 @@
     background-color: white;
     border: none;
     border-radius:20px;
-    width: 50%;
+    width: 80%;
     margin: auto;
     padding: 20px;
     left: 50%;
