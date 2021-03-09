@@ -9,7 +9,8 @@ class Registration(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     phone = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("Password")])
+    submit = SubmitField('SignUp')
 
 class Delivery(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])

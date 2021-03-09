@@ -12,12 +12,12 @@
   </style>
   <script>
     window.onload = getLocation();
+  
     // Initialize and add the map
-    function initMap() {
+    function initMap(longitude, latitude) {
       // The location of Uluru
       const uluru = { lat: 5.738548696970146, lng: 0.03265251065119554 };
-
-
+      // const uluru = { lat: latitude,  lng: longitude };
       // The map, centered at Uluru
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 15,
@@ -38,12 +38,22 @@
     } else {
       x.innerHTML = "Geolocation is not supported by this browser.";
     }
+
   }
+
+
   
   function showPosition(position) {
-    document.getElementById("demo").value = "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude;
+    // document.getElementById("demo").value = "Latitude: " + position.coords.latitude +
+    // "<br>Longitude: " + position.coords.longitude;
     console.log('shown')
+    const loc = "https://www.google.com/maps/search/?api=1&query=" + position.coords.latitude + "," + position.coords.longitude
+    console.log(loc)
+
+    sessionStorage.setItem("latitude", position.coords.latitude)
+    sessionStorage.setItem("longitude", position.coords.longitude)
+    document.getElementById("demo").value = loc
+
   }
 
     
@@ -100,9 +110,9 @@
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQbDoqr9mxC1QEEcWLsyjKg428R0YgeE&callback=initMap&libraries=&v=weekly"
       async
+    >
 
-const loc = "https://www.google.com/maps/search/?api=1&query="{ long} + {lat}
-    ></script>
+  </script>
 
 
 {% endblock %}

@@ -15,6 +15,7 @@ login_manager.login_message_category = "info"
 from models import *
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -40,16 +41,20 @@ def summary():
         form.phone.data = current_user.phone
         form.items = cart
     if form.validate_on_submit():
-        api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
-        phone = "0545977791" #SMS recepient"s phone number
-        message = "You have recieved a new order. please check your dashboard to confirm." + cart + "."
-        sender_id = "Basilissa" #11 Characters maximum
-        send_sms(api_key,phone,message,sender_id)
         order = Order(order = cart)
         db.session.add(order)
         db.session.commit()
         print (order.id)
         orderId = order.id
+        orderid = str(orderId)
+        api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
+        phone = "‭0249411910‬" #SMS recepient"s phone number
+        # phone = "0545977791" #SMS recepient"s phone number
+        # newrl = (url_for(form.location.data))
+        # console.log(newrl)
+        message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
+        sender_id = "Basilissa" #11 Characters maximum
+        send_sms(api_key,phone,message,sender_id)
         return render_template('summary.html', id=orderId)
     return render_template('delivery.html', form=form) 
 
@@ -73,6 +78,10 @@ def delivery():
 @app.route('/maps')
 def maps():
     return render_template('maps copy.html')
+
+@app.route('/account')
+def account():
+    return render_template('account.html')
 
 @app.route('/dashboard')
 def dashboard():

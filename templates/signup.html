@@ -27,12 +27,17 @@
     {{form.password (class="form-control", id="exampleInputEmail1")}}
 </div>
 
+<div class="form-group">
+    {{form.confirm_password.label}}
+    {{form.confirm_password (class="form-control", id="exampleInputEmail1")}}
+</div>
+
+
 <div style="display: flex; justify-content: space-between;">
-    <h6 class="">One</h6>
-    <h6>Two</h6>
+    <h6 class="">Already Have an account? <a href="{{url_for('login')}}">Login Here</a></h6>
 </div>
 <div class="form-group">
-    {{form.submit}}
+    {{form.submit(class="button")}}
 </div>
     </form>
     </div>
