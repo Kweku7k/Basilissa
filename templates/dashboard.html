@@ -11,44 +11,46 @@
             </div>
         </div>
         <div class="col-md-3">
+            <a href="{{url_for("items")}}">
             <div class="block">
-                <h4>Available Items</h4>
-                <h1 style="font-weight: bold;">30</h1>
+                <h4>All Items</h4>
+                <h1 style="font-weight: bold;">{{total}}</h1>
                 <h6 class="text-muted">Last Updated: Right Now</h6>
             </div>
+            </a>
         </div>
         <div class="col-md-3">
             <div class="block" style="background-color: red; color: white;">
                 <h4>Restock Now!</h4>
                 <h1 style="font-weight: bold;">30</h1>
                 <h6>Last Updated: Right Now</h6>
-
             </div>
         </div>
     </div>
 
-    <div class="row" style="margin-top: 5%;">
+    <!-- <div class="row" style="margin-top: 5%;">
       <div id="curve_chart" class="curve_chart"></div>
-    </div>
+    </div> -->
 
     <div class="row" style="margin-top: 5%;">
         <div class="col-md-3">
             <div class="block">
-                <h4>Total Orders</h4>
+                <h4>Riders</h4>
                 <h1 style="font-weight: bold;">30</h1>
                 <h6 class="text-muted">Last Updated: Right Now</h6>
             </div>
         </div>
         <div class="col-md-3">
             <div class="block">
-                <h4>Available Items</h4>
+                <h4>Successfull Orders</h4>
                 <h1 style="font-weight: bold;">30</h1>
                 <h6 class="text-muted">Last Updated: Right Now</h6>
             </div>
+
         </div>
         <div class="col-md-3">
             <div class="block" style="background-color: red; color: white;">
-                <h4>Restock Now!</h4>
+                <h4>Failed Orders</h4>
                 <h1 style="font-weight: bold;">30</h1>
                 <h6>Last Updated: Right Now</h6>
 

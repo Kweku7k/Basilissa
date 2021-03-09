@@ -1,17 +1,19 @@
+import urllib.request, urllib.parse
+import urllib
 from flask import Flask, render_template, redirect, url_for, flash, request
 from forms import Registration, Delivery, ItemForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import login_user,logout_user,current_user,LoginManager
-import urllib.request, urllib.parse
-import urllib
+from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
+login_manager = LoginManager(app)
+login_manager.login_view = "login"
+login_manager.login_message_category = "info"
 from models import *
 
-login_manager = LoginManager(app)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -28,17 +30,31 @@ def menu(location):
 
 @app.route("/summary", methods=['POST','GET'])
 def summary():
+    form = Delivery()
     cart = request.form['cart']
     print(cart)
-    api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
-    phone = "0545977791" #SMS recepient"s phone number
-    message = "You have recieved a new order. please check your dashboard to confirm."
-    sender_id = "Basilissa" #11 Characters maximum
-    send_sms(api_key,phone,message,sender_id)
-    return render_template('summary.html') 
+    print(current_user)
+    if request.method == 'POST':
+        print('It is a post method')
+        form.name.data = current_user.name
+        form.phone.data = current_user.phone
+        form.items = cart
+    if form.validate_on_submit():
+        api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
+        phone = "0545977791" #SMS recepient"s phone number
+        message = "You have recieved a new order. please check your dashboard to confirm." + cart + "."
+        sender_id = "Basilissa" #11 Characters maximum
+        send_sms(api_key,phone,message,sender_id)
+        order = Order(order = cart)
+        db.session.add(order)
+        db.session.commit()
+        print (order.id)
+        orderId = order.id
+        return render_template('summary.html', id=orderId)
+    return render_template('delivery.html', form=form) 
 
 
-@app.route('/delivery', methods=['POST','GET'])
+@app.route('/hoh', methods=['POST','GET'])
 def delivery():
     form = Delivery()
     if request.method == 'GET':
@@ -60,7 +76,9 @@ def maps():
 
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html')
+    tot = Item.query.all()
+    total = len(tot)
+    return render_template('dashboard.html', total=total)
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -79,6 +97,7 @@ def signup():
     return render_template('signup.html', form=form)
 
 @app.route('/explore/<string:itemname>')
+@login_required
 def explore(itemname):
     items = Item.query.filter_by(category="Pizza").all()
     print(itemname)
@@ -89,6 +108,10 @@ def explore(itemname):
 def branches():
     return render_template('branches.html')
 
+@app.route('/riders')
+def riders():
+    return render_template('riders.html')
+
 @app.route('/additem', methods=['POST','GET'])
 def additem():
     form = ItemForm()
@@ -97,13 +120,22 @@ def additem():
         item = Item(name = form.name.data, price=form.price.data, description=form.description.data, category=form.category.data)
         db.session.add(item)
         db.session.commit()
-        return('Success')
+        return redirect(url_for('items'))
     return render_template('additem.html', form=form)
 
-@app.route('/allitems')
-def allitems():
-    items = Item.query.all()
-    return render_template('allitems.html', items=items)
+@app.route('/item/<int:id>', methods=['POST','GET'])
+def item(id):
+    form = ItemForm()
+    item = Item.query.filter_by(id=id).first()
+    if request.method == 'GET':
+        form.name.data = item.name
+        form.price.data = item.price
+        form.description.data = item.description
+    if request.method == 'POST':
+        newitem = Item(name = form.name.data, price=form.price.data, description = form.description.data)
+        db.session.commit()
+        return redirect(url_for('items'))
+    return render_template('item.html', item=item, form=form)
 
 @app.route('/cart')
 def cart():
@@ -126,6 +158,7 @@ def handle_data():
     new = []
     piw = projectpath.replace(',', '')
     print ("final " + piw)
+    #  Shows the items in the cart
     for x in piw:
         x = int(x)
         item = Item.query.filter_by(id = x).first()
@@ -143,13 +176,27 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
         if user:
-            flash (f'Login for ' + current_user.name ,'success')
+            login_user(user)
+            flash (f'Login for ' + user.name ,'success')
             return redirect(url_for('index'))
-            
+            # next = request.args.get('next')
         else:
             flash (f'The account cant be found', 'danger')
     return render_template('login.html', form=form)
 
+
+@app.route('/items')
+def items():
+    items = Item.query.all()
+    return render_template('items.html', items = items)
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    print(id)
+    item = Item.query.filter_by(id=id).first()
+    db.session.delete(item)
+    db.session.commit()
+    return redirect('/items')
 
 if __name__ == '__main__':
     app.run(debug=True)

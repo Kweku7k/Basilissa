@@ -2,10 +2,16 @@
 <html>
   <head>
     <title>Map</title>
-
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
+<!-- Menu Header -->
     <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="../static/css/style.css">
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
@@ -14,7 +20,13 @@
         width: 100vw;
         /* The width is the width of the web page */
       }
+      a{
+        color: black;
+        text-decoration: none;
+      }
     </style>
+    <link rel="stylesheet" href="../static/css/style.css">
+
     <script>
       // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
@@ -24,16 +36,23 @@ let map, infoWindow;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 5.738548696970146, lng: 0.03265251065119554 },
-    zoom: 14,
+    center: { lat: 5.6535279721067235, lng:-0.09563454529332772 },
+    zoom: 11,
   });
 
   const c25 = { lat: 5.738548696970146, lng: 0.03265251065119554 };
   const hroad = { lat: 5.651568283023563, lng: -0.012291229964026231 };
+  const labone = { lat: 5.568227203252669, lng: -0.17423860270222863};
+  const afienya = { lat: 5.758014976705425, lng: -0.005242345029456953};
+  const dansoman = { lat: 5.563293449288478, lng: -0.26005960085067864};
+  const accramall = { lat: 5.62240338790301, lng: -0.1736054180457482};
+  const westhills = { lat: 5.544709486714602, lng: -0.3435055027023442};
+  const achimota = { lat: 5.637926542324048, lng: -0.2407569738659661};
 
   const newmarker = new google.maps.Marker({
           position: c25,
           map: map,
+          // icon: "https://scontent.facc6-1.fna.fbcdn.net/v/t1.0-9/51395076_2259726400715016_1974730859239964672_n.jpg?_nc_cat=102&ccb=3&_nc_sid=09cbfe&_nc_eui2=AeEPnFVceKh-DdF6IPPdMFYWPfWVmyHf1ho99ZWbId_WGstJXvzXoCQZqmZDiQPTjeuHGBVlCLVi5wTxVj_VjQYI&_nc_ohc=728aog7GVlgAX-ZdCrV&_nc_ht=scontent.facc6-1.fna&oh=40ad17fa18207ad765464c602402a2b1&oe=6062233B",
           zoom: 4,
 
         });
@@ -44,10 +63,40 @@ function initMap() {
           zoom: 4,
         });
 
-       
-
-
         
+        const labonemarker = new google.maps.Marker({
+          position: labone,
+          map: map,
+          zoom: 4,
+        });
+
+        const afienyamarker = new google.maps.Marker({
+          position: afienya,
+          map: map,
+          zoom: 4,
+        });
+
+        const dansomanmarker = new google.maps.Marker({
+          position: dansoman,
+          map: map,
+          zoom: 4,
+        });
+
+        const accramallmarker = new google.maps.Marker({
+          position: accramall,
+          map: map,
+          zoom: 4,
+        });
+        const westhillsmarker = new google.maps.Marker({
+          position: westhills,
+          map: map,
+          zoom: 4,
+        });
+        const achimotamarker = new google.maps.Marker({
+          position: achimota,
+          map: map,
+          zoom: 4,
+        });
 
   infoWindow = new google.maps.InfoWindow();
   // const locationButton = document.createElement("button");
@@ -96,20 +145,77 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     <!--The div element for the map -->
     <div id="map">
     </div>
-<!-- <div class="overlay"> -->
-    <div class="locations">
-      <button id="buttons" class="button">Locate ME</button>
+    <!-- <div class="overlay"> -->
+      <div id="locations" class="locations">
+        <div class="strip-even">
+          <button id="buttons" class="button">Locate ME</button>
+          <button data-toggle="collapse" data-target="#zones" style="border: none; background-color: transparent; color: blue;">View all</button>
+        </div>
+        <div id="zones" class="collapse">
       <a href="{{url_for('menu', location="Dawhenya")}}">
-      <div class="bar">
-        <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
-        <h4>Basillisa Dawhenya</h4>
-        <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
-      </div>
-      </a>
-      <div class="bar">
-        <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i>
-        <h4>Basillisa Hospital Raad</h4>
-      </div>
+        <div class="bar">
+          <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+          <!-- <i class="fas fa-search-location fa-2x"></i> -->
+          <img src="../static/img/logo.png" style="height: 50px;" alt="">
+          <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Dawhenya</h4>
+          <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+        </div>
+        </a>
+        <a href="{{url_for('menu', location="Labone")}}">
+          <div class="bar">
+            <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+            <!-- <i class="fas fa-search-location fa-2x"></i> -->
+            <img src="../static/img/logo.png" style="height: 50px;" alt="">
+            <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Labone</h4>
+            <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+          </div>
+          </a>
+          <a href="{{url_for('menu', location="Afeinya")}}">
+            <div class="bar">
+              <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+              <!-- <i class="fas fa-search-location fa-2x"></i> -->
+              <img src="../static/img/logo.png" style="height: 50px;" alt="">
+              <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Afienya</h4>
+              <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+            </div>
+            </a>
+            <a href="{{url_for('menu', location="Dansoman")}}">
+              <div class="bar">
+                <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+                <!-- <i class="fas fa-search-location fa-2x"></i> -->
+                <img src="../static/img/logo.png" style="height: 50px;" alt="">
+                <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Dansoman</h4>
+                <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+              </div>
+              </a>
+              <a href="{{url_for('menu', location="Accra Mall")}}">
+                <div class="bar">
+                  <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+                  <!-- <i class="fas fa-search-location fa-2x"></i> -->
+                  <img src="../static/img/logo.png" style="height: 50px;" alt="">
+                  <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Accra Mall</h4>
+                  <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+                </div>
+                </a>
+                <a href="{{url_for('menu', location="West Hills")}}">
+                  <div class="bar">
+                    <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+                    <!-- <i class="fas fa-search-location fa-2x"></i> -->
+                    <img src="../static/img/logo.png" style="height: 50px;" alt="">
+                    <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa West Hills</h4>
+                    <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+                  </div>
+                  </a>
+                  <a href="{{url_for('menu', location="Achimota")}}">
+                    <div class="bar">
+                      <!-- <i class="fas fa-certificate fa-2x" style="margin-top: auto; margin-bottom:auto;"></i> -->
+                      <!-- <i class="fas fa-search-location fa-2x"></i> -->
+                      <img src="../static/img/logo.png" style="height: 50px;" alt="">
+                      <h4 style="font-family: sans-serif; margin-top:auto; margin-bottom: auto;">Basillisa Achimota</h4>
+                      <i style="margin-left: auto; margin-top: auto; margin-bottom: auto;" class="fas fa-angle-right"></i>
+                    </div>
+                    </a>
+    </div>
     </div>
     </div>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->

@@ -11,6 +11,7 @@
     }
   </style>
   <script>
+    window.onload = getLocation();
     // Initialize and add the map
     function initMap() {
       // The location of Uluru
@@ -29,6 +30,23 @@
         zoom: 4,
       });
     }
+
+  var x = document.getElementById("demo");
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+  
+  function showPosition(position) {
+    document.getElementById("demo").value = "Latitude: " + position.coords.latitude +
+    "<br>Longitude: " + position.coords.longitude;
+    console.log('shown')
+  }
+
+    
   </script>
 {% endblock %}
 
@@ -36,7 +54,7 @@
 
 {% block body %}
 <div class="container">
-    
+    <div class="myFrame"></div>
 <form action="" method="POST">
 {{form.hidden_tag()}}
     
@@ -53,9 +71,15 @@
 </div>
 
 <div class="form-group">
-    {{form.location.label}}
-    {{form.location (class="form-control", id="exampleInputEmail1")}}
+  {{form.cart.label}}
+  {{form.cart (class="form-control", id="exampleInputEmail1")}}
 </div>
+
+<div class="form-group">
+    {{form.location.label()}}
+    {{form.location (class="form-control", id="demo")}}
+</div>
+
 
 
 
@@ -71,5 +95,10 @@
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQbDoqr9mxC1QEEcWLsyjKg428R0YgeE&callback=initMap&libraries=&v=weekly"
       async
+
+const loc = "https://www.google.com/maps/search/?api=1&query="{ long} + {lat}
     ></script>
+
+
 {% endblock %}
+

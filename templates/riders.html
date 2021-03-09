@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    
+    {% for rider in riders %}
+    <a href="{{url_for('item', id=item.id)}}">
+    <div class="strip">
+        <h6>{{rider.name}}</h6>
+        <div class="actions">
+            <i class="fas fa-trash-alt" style="margin-right: 20px;"></i>
+            <i class="fas fa-eye-slash "></i>
+        </div>
+    </div>
+</a>
+    {% endfor %}
+</div>
+{% endblock %}
