@@ -76,6 +76,7 @@ def delivery():
     return render_template('delivery.html', form=form)
 
 @app.route('/maps')
+@login_required
 def maps():
     return render_template('maps copy.html')
 
@@ -106,7 +107,6 @@ def signup():
     return render_template('signup.html', form=form)
 
 @app.route('/explore/<string:itemname>')
-@login_required
 def explore(itemname):
     items = Item.query.filter_by(category="Pizza").all()
     print(itemname)
