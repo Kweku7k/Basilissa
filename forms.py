@@ -18,6 +18,7 @@ class Delivery(FlaskForm):
     location = StringField('Location', validators=[DataRequired()])
     cart = StringField('Cart', validators=[DataRequired()])
     notes = StringField('Notes', widget=TextArea())
+    branch = StringField('Branch', validators=[DataRequired()])
     submit = SubmitField('Place Order')
 
 class ItemForm(FlaskForm):

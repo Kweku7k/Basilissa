@@ -30,7 +30,11 @@ class Item(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order = db.Column(db.String(), nullable=False)
+    user = db.Column(db.String(),nullable=False)
+    phone = db.Column(db.String(), nullable=False)
+    location = db.Column(db.String(), nullable=False)
+    branch = db.Column(db.String(), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return f"Item('{self.id}', '{self.price}')"
+        return f"Item('{self.id}', '{self.date_created}')"

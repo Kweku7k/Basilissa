@@ -1,20 +1,21 @@
 import urllib.request, urllib.parse
 import urllib
-from flask import Flask, render_template, redirect, url_for, flash, request
+from flask import Flask, render_template, redirect, url_for, flash, request, session
 from forms import Registration, Delivery, ItemForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
+# from flask_session import Session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
+# session = Session(app)
+# SESSION_TYPE = 'filesystem'
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 from models import *
-
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -27,6 +28,7 @@ def index():
 @app.route('/menu/<string:location>')
 def menu(location):
     print(location)
+    session['location'] = location
     return render_template('menu.html', location=location)
 
 @app.route("/summary", methods=['POST','GET'])
@@ -34,22 +36,25 @@ def summary():
     form = Delivery()
     cart = request.form['cart']
     print(cart)
-    print(current_user)
+    # print(current_user)
+    branch = session['location']
+    print(branch)
     if request.method == 'POST':
         print('It is a post method')
-        form.name.data = current_user.name
-        form.phone.data = current_user.phone
+        # form.name.data = current_user.name
+        # form.phone.data = current_user.phone
+        form.branch.data = branch
         form.items = cart
     if form.validate_on_submit():
-        order = Order(order = cart)
+        order = Order(order = cart, user = form.name.data, phone = form.phone.data, location = form.location.data, branch = form.branch.data )
         db.session.add(order)
         db.session.commit()
         print (order.id)
         orderId = order.id
         orderid = str(orderId)
         api_key = "aniXLCfDJ2S0F1joBHuM0FcmH" #Remember to put your own API Key here
-        phone = "‭0249411910‬" #SMS recepient"s phone number
-        # phone = "0545977791" #SMS recepient"s phone number
+        # phone = "‭0249411910‬" #SMS recepient"s phone number
+        phone = "0545977791" #SMS recepient"s phone number
         # newrl = (url_for(form.location.data))
         # console.log(newrl)
         message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
@@ -76,7 +81,6 @@ def delivery():
     return render_template('delivery.html', form=form)
 
 @app.route('/maps')
-@login_required
 def maps():
     return render_template('maps copy.html')
 
@@ -111,6 +115,8 @@ def explore(itemname):
     items = Item.query.filter_by(category="Pizza").all()
     print(itemname)
     print(items)
+    location = session['location']
+    print(location)
     return render_template('explore.html', items=items)
 
 @app.route('/branches')
@@ -157,6 +163,17 @@ def send_sms(api_key,phone,message,sender_id):
     content = urllib.request.urlopen(url).read()
     print (content)
     print (url)
+
+@app.route('/orders')
+def orders():
+    orders = Order.query.all()
+    return render_template('orders.html', orders=orders)
+
+@app.route('/order/<int:id>')
+def order(id):
+    order = Order.query.filter_by(id=id).first()
+    print(order)
+    return render_template('order.html', order=order)
 
 
 @app.route('/handle_data', methods=['POST'])

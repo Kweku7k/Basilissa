@@ -1,0 +1,20 @@
+{% extends "dash.html" %}
+
+{% block body %}
+<div class="container">
+   <a href="{{url_for('additem')}}"><button class="btn"><i class="fas fa-plus-circle"></i>Add an item</button></a>
+    {% for order in orders %}
+    <div class="strip">
+        <a href="{{url_for('order', id=order.id)}}">
+            <h6>Order Id. {{order.id}}</h6>
+        </a>
+            <div class="actions">
+                <a href="{{url_for('delete', id=order.id)}}">
+                <i class="fas fa-trash-alt" style="margin-right: 20px;"></i>
+            </a>
+                <i class="fas fa-eye-slash "></i>
+            </div>
+        </div>
+        {% endfor %}
+</div>
+{% endblock %}
