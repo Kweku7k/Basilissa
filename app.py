@@ -23,7 +23,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html', title = 'Basillisa')
+    return render_template('landingpage.html', title = 'Basillisa')
 
 @app.route('/menu/<string:location>')
 def menu(location):

@@ -21,6 +21,51 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Nav */
+
+.nav-item-active{
+    color: #1a1a1a;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: #FEBE19;
+}
+
+.nav-item{
+    color: #1a1a1aa6;
+    font-weight: 400;
+}
+
+section{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+  
+}
+
+.elip{
+    background-color: black;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-right:3vw;
+}
+
+.scrolling-card {
+  display: inline-block;
+}
+
+.ellipse{
+position: absolute;
+width: 940px;
+height: 923px;
+left: 888px;
+top: -39px;
+}
 .overlay{
     position: absolute;
     height: 100%;
@@ -91,12 +136,43 @@
     color: rgb(255, 251, 0);
 }
 
+.header{
+    font-weight: 700;
+    font-size: 48px;
+}
+
+.support-regular{
+    font-size: 16px;
+    opacity: 70%;
+}
+
+.middle-img{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .button{
     border: none;
     padding: 10px 20px;
     color: black;
     background-color: yellow;
 }
+
+.button-solid-black{
+background-color: black;
+color: white;
+padding: 12px 16px;
+border: none;
+border-radius: 12px;
+}
+
+.button-regular-black{
+    background-color: transparent;
+    color: black;
+    padding: 12px 16px;
+    border: 1px solid black;
+    border-radius: 12px;
+    }
 
 .menu-button{
     border: none;

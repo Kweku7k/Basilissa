@@ -25,34 +25,32 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-        <a class="navbar-brand" href="{{url_for('index')}}"><img width="30" height="30" src="../static/img/logo.jpg"></a>
+        <a class="navbar-brand" href="{{url_for('index')}}"><img width="70" height="70" src="../static/img/logo.jpg"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto" style="margin-right: auto; margin-left: auto;">
             <li class="nav-item active">
-              <a class="nav-link" href="{{url_for("index")}}">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{{url_for("index")}}"><h6 class="nav-item-active">Home</h6><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('branches')}}">Branches</a>
+              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Menu</h6></a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Regions
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{url_for('branches')}}">Accra</a>
-                <a class="dropdown-item" href="{{url_for('branches')}}">Tema</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{url_for('maps')}}">Locate Me</a>
-              </div>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">About Us</h6></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Gallery</h6></a>
             </li>
           </ul>
             {% if current_user %}
             <a href="{{url_for('account')}}">
-              <button class="btn btn-success my-2 my-sm-0">Account</button>
+              <button class="button-regular-black my-2 my-sm-0 mr-3">Order Now</button>
+            </a>
+            <a href="{{url_for('account')}}">
+              <button class="button-solid-black my-2 my-sm-0">Order Now</button>
             </a>
             {% else %}
             <a href="{{url_for('login')}}">
