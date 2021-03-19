@@ -2,47 +2,102 @@
 
 {% block body %}
 
+<div class="wrapper">
 
 <section>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col">
                 <br>
-                <h1 class="header" style="width: 530px;">Food tastes better when you eat it with your family</h1>
                 <br>
-                <h6 class="support-regular" style="width: 400px;">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
+                <div >
+                    <h1 data-aos="fade-up" data-aos-duration="1000"  class="header">Food tastes better when you eat it with your family</h1>
+                </div>
                 <br>
-                <div class="flex">
-                    <button class="button-solid-black" style="font-weight: bold;">Find a branch near me <i class="fas fa-arrow-right"></i></button>
-                    <button class="button-regular-black">Explore Our Meny</button>
+                <h6 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" class="support-regular" style="width: 400px; font-weight: 400;">basilisa is a family restaurant that has been in operation since 2000. Over the years,we have provided to families a holistic and featuring experience by providing not only the best food but amazing services and customer care.</h6>
+                <br>
+                <br>
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="flex">
+                    <button class="button-solid-black" style="margin-right: 24px;">Find a branch near me <i class="fas fa-arrow-right"></i></button>
+                    <button class="button-regular-black">Explore Our Menu</button>
                 </div>
             </div>
-            <div class="col-md-6">
-                <img src="../static/img/pizza.png" class="middle-img" width="498px" height="353px" alt="">
+            <div class="col">
+                <img data-aos="zoom-in" data-aos-duration="2000" src="../static/img/pizza.png" class="middle-img" width="498px" height="353px" alt="">
             </div>
         </div>
     </div>
 </section>
 
-<!-- <section>
+
+<section>
     <div class="container">
-        <h4>Meal Of The Day</h4>
+        <div style="display: flex; justify-content: space-between;">
+        <div>
+            <h6 style="color: #FEBE19;">EDITORS PICK</h6>
+            <h4>Meal Of The Day</h4>
+        </div>
+        <div>
+            <button class="button-regular-yellow"><i class="fas fa-arrow-left"></i></button>
+            <button class="button-solid-yellow"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
+        <br>
 
     <div class="scrolling-wrapper">
-        <div class="scrolling-card">
-            <img src="../static/img/fwd/BURGER AND CHIPS NEW copy.jpg" width="352px" height="226px" alt="">
+        <div class="scrolling-card" data-aos="fade-up" style="position: relative;">
+            <img src="../static/img/fwd/bassilisa-18.jpg" width="352px" height="226px" style="border-radius: 10px;" alt="">
+            <div style="margin-top: 2vh; display: flex; justify-content: space-between;">
+                <div>
+                <h6 class="support" style="font-weight: 400; font-size: 20px;">Chilli Chicken </h1>
+                <h6 class="support" style="font-size: 24px;">GHS 34.90</h1>
+                </div>
+                <div>
+                    <button class="button-solid-yellow">Order Now</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="scrolling-card" data-aos="fade-up" data-aos-duration="1000" style="position: relative;">
+            <img src="../static/img/fwd/bassilisa-18.jpg" width="352px" height="226px" style="border-radius: 10px;" alt="">
+            <div style="margin-top: 2vh; display: flex; justify-content: space-between;">
+                <div>
+                <h6 class="support" style="font-weight: 400; font-size: 20px;">Chilli Chicken </h1>
+                <h6 class="support" style="font-size: 24px;">GHS 34.90</h1>
+                </div>
+                <div>
+                    <button class="button-solid-yellow">Order Now</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="scrolling-card" data-aos="fade-up" data-aos-duration="2000" style="position: relative;">
+            <img src="../static/img/fwd/bassilisa-18.jpg" width="352px" height="226px" style="border-radius: 10px;" alt="">
+            <div style="margin-top: 2vh; display: flex; justify-content: space-between;">
+                <div>
+                <h6 class="support" style="font-weight: 400; font-size: 20px;">Chilli Chicken </h1>
+                <h6 class="support" style="font-size: 24px;">GHS 34.90</h1>
+                </div>
+                <div>
+                    <button class="button-solid-yellow">Order Now</button>
+                </div>
+
+            </div>
         </div>
       </div>
     </div>
 
-</section> -->
-<section style="background-color: #febd1950;">
+</section>
+
+<section style="background-color: #febd1950; height: 100vh;">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="../static/img/pizza.png" class="middle-img" width="498px" height="353px" alt="">
+        <div class="row" style="margin-top: auto; margin-bottom: auto ;">
+            <div class="col">
+                <img data-aos="fade-right" data-aos-duration="1000" src="../static/img/pizza.png" class="middle-img" width="498px" height="353px" alt="">
             </div>
-            <div class="col-md-6">
+            <div data-aos="fade-left" data-aos-duration="1000" class="col">
                 <h4 class="header" style="font-size: 40px; width: 424px;">Nothing brings people together like good food</h4>
                 <br>
                 <h6 class="support-regular" style="width: 400px;">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
@@ -58,14 +113,14 @@
     <div class="wrapper">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h6 class="support" style="color: #FEBE19;">ABOUT US</h6>
+            <div class="col">
+                <h6 class="support" style="color: #FEBE19;" data-aos="fade-right">ABOUT US</h6>
                 <br>
-                <h4 class="header" style="font-size: 40px; width: 424px;">Nothing brings people together like good food</h4>
+                <h4 data-aos-delay="1000" data-aos="fade-right" class="header" style="font-size: 40px; width: 424px;">Nothing brings people together like good food</h4>
                 <br>
-                <h6 class="support-regular" style="width: 400px;">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
+                <h6 data-aos-delay="1500" data-aos="fade-right" class="support-regular" style="width: 400px;">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
             </div>
-            <div class="col-md-6">
+            <div class="col">
                 <img src="../static/img/Chef.png" class="middle-img"  alt="">
             </div>
         </div>
@@ -74,94 +129,166 @@
 </section>
 
 
-<section>
+<section class="branches">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col">
+                <h6 class="support-regular" style="color: #FEBE19; opacity: 100%;">FIND US</h6>
                 <h4 class="header" style="font-size: 40px; width: 424px;">Our Branches</h4>
                 <br>
                 <h6 class="support-regular" style="width: 400px;">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
             </div>
-            <div class="col-md-6">
+            <div class="col">
 
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
+                
+
+                <div data-aos="fade-up" data-aos-delay="1000">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
                         <div>
-                            <h4>Dawhenya</h4>
-                            <h6>30km away</h6>
+                            <h4 class="branch-main">Labone</h4>
+                            <h6 class="branch-support"> 30km away</h6>
                         </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
                         <div>
-                            <h4>Afienya</h4>
-                            <h6>30km away</h6>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
 
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
+
+                <div data-aos="fade-up" data-aos-delay="1500">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
                         <div>
-                            <h4>Dawhenya</h4>
-                            <h6>30km away</h6>
+                            <h4 class="branch-main">Afienya</h4>
+                            <h6 class="branch-support"> 30km away</h6>
                         </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
                         <div>
-                            <h4>Dawhenya</h4>
-                            <h6>30km away</h6>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
 
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
+                <div data-aos="fade-up" data-aos-delay="2000">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
                         <div>
-                            <h4>Dawhenya</h4>
-                            <h6>30km away</h6>
+                            <h4 class="branch-main">Dansoman</h4>
+                            <h6 class="branch-support"> 30km away</h6>
                         </div>
-                    </div>
-                </div>
-                <hr>
-
-                <div style="display:flex; ">
-                    <div class="elip"></div>
-                    <div style="display:flex; justify-content:space-between;">
                         <div>
-                            <h4>Dawhenya</h4>
-                            <h6>30km away</h6>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
                         </div>
                     </div>
+                    <hr>
                 </div>
-                <hr>
 
-
-                <div class="footer">
-                    <div class="wrapper">
-                        <div class="container">
-                            
+                <div data-aos="fade-up" data-aos-delay="2500">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h4 class="branch-main">Tema</h4>
+                            <h6 class="branch-support"> 30km away</h6>
+                        </div>
+                        <div>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
                         </div>
                     </div>
+                    <hr>
                 </div>
+
+                <div data-aos="fade-up" data-aos-delay="3000">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h4 class="branch-main">Accra Mall</h4>
+                            <h6 class="branch-support"> 30km away</h6>
+                        </div>
+                        <div>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="3500">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h4 class="branch-main">West Hills Mall</h4>
+                            <h6 class="branch-support"> 30km away</h6>
+                        </div>
+                        <div>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="4000">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h4 class="branch-main">Achimota Mall</h4>
+                            <h6 class="branch-support"> 30km away</h6>
+                        </div>
+                        <div>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div data-aos="fade-up">
+                    <!-- <div class="elip"></div> -->
+                    <div style="display:flex; justify-content: space-between;">
+                        <div>
+                            <h4 class="branch-main">Dawhenya</h4>
+                            <h6 class="branch-support"> 30km away</h6>
+                        </div>
+                        <div>
+                            <h6 class="support-regular" style="width: auto; color: #FEBE19; opacity: 100%; margin-top: auto; margin-bottom: auto;">Order from here <i class="fas fa-arrow-right"></i></h6>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
             </div>
         </div>
     </div>
 </section>
+<section style="padding-bottom: 0;">
+    <div class="footer" style="color: white; height: 50vh; margin: 0;">
+        <div class="wrapper">
+            <div class="container">
+                <div class="row">
+                <div class="col-md-1">
+                    <img src="../static/img/trlogo.png" width="50" alt="">
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    <h6>Navigation</h6>
+                    <h6 class="support-regular">Home</h6>
+                    <h6 class="support-regular">About</h6>
+                </div>
+                <div class="col-md-2">
+                    <h6>Our Menu</h6>
+                    <h6 class="support-regular">Home</h6>
+                    <h6 class="support-regular">About</h6>
+                </div>
+                <div class="col-md-2">
+                    <h6>Our Menu</h6>
+                    <h6 class="support-regular">Facebook</h6>
+                    <h6 class="support-regular">Instagram</h6>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
 
 
 {% endblock %}
