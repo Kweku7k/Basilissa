@@ -1,0 +1,39 @@
+{% extends "dash.html" %}
+
+{% block body %}
+<h4>Orders</h4>
+<br>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <h6>Order #0001</h6>
+            <h6 class="text-muted" style="font-weight:300">22nd February 2021</h6>
+            <br>
+            <!-- Order in -->
+            <div>
+            <div class="order">
+                <div class="elip" style="margin-right: 1vh;"></div>
+                <div>
+                    <h6>Mozerrela Pizza</h6>
+                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
+                </div>
+            </div>
+            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
+        </div>
+
+        <div>
+            <div class="order">
+                <div class="elip" style="margin-right: 1vh;"></div>
+                <div>
+                    <h6>Mozerrela Pizza</h6>
+                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
+                </div>
+            </div>
+            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
+        </div>
+            <!-- Order out -->
+            <h6><a href="#"><u>View all</u></a></h6>
+        </div>
+    </div>
+</div>
+{% endblock %}

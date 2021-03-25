@@ -65,6 +65,10 @@ section{
     margin-right:3vw;
 }
 
+.dash-item{
+    display: flex;
+}
+
 .scrolling-card {
   display: inline-block;
   margin-right: 5vh;
@@ -160,21 +164,24 @@ top: -39px;
 .header{
     font-weight: 700;
     font-size: 48px;
-    width: 530px; 
+
     font-weight: 600;
 }
 
 .support-regular{
     font-size: 16px;
     opacity: 70%;
-    width: 400px; 
+
     font-weight: 400;
 }
 
 .middle-img{
     margin-top: auto;
     margin-bottom: auto;
+
 }
+
+
 
 .text-block {
     position: absolute;
@@ -366,4 +373,63 @@ font-family: 'Poppins', 'sans-serif';
 }
 .bar i{
     margin-right: 10px;
+}
+
+.dash-item{
+    background-color: transparent;
+    padding: 16px 123px 16px 39px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.dash-item:hover{
+    background-color: rgba(180, 180, 180, 0.116);
+    padding: 16px 123px 16px 39px;
+    color: black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+.dash-item-active{
+    background-color: #FEBE19;
+    padding: 16px 123px 16px 39px;
+    color: white;
+    font-weight: bold;
+    border-radius:10px;
+    margin-bottom: 10px;
+}
+
+.sidenav{
+    padding: 40px;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+}
+
+.main{
+    width: 70%; 
+    height: 100%; 
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 40px;
+    bottom: 0;
+}
+
+.card{
+    border-radius: 10px;
+    padding: 20px;
+    border: none
+}
+
+.info-block{
+    margin-bottom: 3vh ;
+}
+
+.order{
+    display: flex;
 }

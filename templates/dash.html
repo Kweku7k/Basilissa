@@ -23,30 +23,74 @@
     <title>{{title}}</title>
     {% block head %}{% endblock %}
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-        <a class="navbar-brand" href="{{url_for('dashboard')}}"><img width="30" height="30" src="../static/img/logo.jpg"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url_for("dashboard")}}">Dashboard <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-            {% if current_user %}
-            <a href="{{url_for('cart')}}">
-              <button class="btn btn-success my-2 my-sm-0">Logout</button>
-            </a>
-            {% else %}
-            <a href="{{url_for('login')}}">
-            <button class="btn btn-outline-success my-2 my-sm-0">Login</button>
-            </a>
-            {% endif %}
-        </div>
-      </nav>
+  <body style="background-color: #f5f5f5;">
+    <div class="sidenav" style="width: 25%; height: 100vh; background-color: white;">
+      <div class="container">
+          <h4>Basilissa</h4>
+          <br>
+  
+              <div class="flex" style="display: flex; margin-bottom: 5vh;">
+                  <div class="elip" style="background-color: #FEBE19; margin-right: 1vw;"></div>
+                  <!-- <img src="../static/img/happy.png" style="width: 100%;"> -->
+                  <div>
+                      <h6>Hello</h6>
+                      <h6 style="font-weight: bold;">Nana Kweku</h6>
+                  </div>
+              </div>
+  
+              <div>
+                  <h6>MENU</h6>
+                  {% if title == 'Dashboard' %}
+                  <div class="dash-item-active">Dashboard</div>
+                  {% else %}
+                  <a style="text-decoration: none;" href="{{url_for('dashboard')}}">
+                    <div class="dash-item">Dashboard</div>
+                  </a>
+                  {% endif %}
+
+                  {% if title == 'Orders' %}
+                  <div class="dash-item-active">Orders</div>
+                  {% else %}
+                  <a style="text-decoration: none;" href="{{url_for('dashorders')}}">
+                  <div class="dash-item">Orders</div>
+                  </a>
+                  {% endif %}
+
+                  {% if title == 'Inventory' %}
+                  <div class="dash-item-active">Inventory</div>
+                  {% else %}
+                  <a style="text-decoration: none;" href="{{url_for('dashinventory')}}">
+                  <div class="dash-item">Inventory</div>
+                  </a>
+                  {% endif %}
+
+                  {% if title == 'Riders' %}
+                  <div class="dash-item-active">Riders</div>
+                  {% else %}
+                  <a style="text-decoration: none;" href="{{url_for('dashriders')}}">
+                  <div class="dash-item">Riders</div>
+                  </a>
+                  {% endif %}
+
+              </div>
+  
+              <div>
+                  <h6>SETTINGS</h6>
+                  <div class="dash-item">Dashboard</div>
+              </div>
+  
+              <div class="flex" style="display: flex; margin-bottom: 5vh; position: absolute; bottom: 5vh;">
+                  <div class="elip" style="background-color: #FEBE19; margin-right: 1vw;"></div>
+                  <div>
+                      <h6>Hello</h6>
+                      <h6 style="font-weight: bold;">Nana Kweku</h6>
+                  </div>
+              </div>
+  
+      </div>
+  </div>
+  
+  
       
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
@@ -57,33 +101,13 @@
         {% endfor %}
       {% endif %}
     {% endwith %}
-    {% block body %}
+    <div class="main">
+      {% block body %}
+      {% endblock %}
+  
+    </div>
 
-    {% endblock %}
 
-    <!-- <div class="footer">
-      <div class="row">
-        <div class="col-md-8">
-          <div style="display:flex;" >
-            <a style="margin-right: 10px;" href="#">HOME</a>
-            <a style="margin-right: 10px;" href="#">BRANCHES</a>
-            <a style="margin-right: 10px;" href="#">MENU</a>
-            <a style="margin-right: 10px;" href="#">LOCATE</a>
-          </div>
-          <div>
-            Copyright Basillisa group of companies.
-          </div>
-        </div>
-        <div class="col-md-4" style="display: flex;">
-          <i style="color: yellow; margin-right: 10px;" class="fab fa-instagram fa-2x"></i>
-          <i style="color: rgb(0, 132, 255); margin-right: 10px;" class="fab fa-facebook fa-2x"></i>
-          <i style="color: rgb(255, 217, 0); margin-right: 10px;" class="fab fa-snapchat fa-2x"></i>
-          <i style="color: rgb(0, 132, 255); margin-right: 10px;" class="fab fa-twitter fa-2x"></i>
-        </div>
-      </div>
-    </div> -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

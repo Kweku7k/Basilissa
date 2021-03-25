@@ -92,7 +92,19 @@ def account():
 def dashboard():
     tot = Item.query.all()
     total = len(tot)
-    return render_template('dashboard.html', total=total)
+    return render_template('dash-dashboard.html', total=total, title='Dashboard')
+
+@app.route('/dash-orders')
+def dashorders():
+    return render_template('dash-orders.html', title='Orders')
+
+@app.route('/dash-inventory')
+def dashinventory():
+    return render_template('tem.html', title='Inventory')
+
+@app.route('/dash-riders')
+def dashriders():
+    return render_template('tem.html', title='Riders')
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -156,6 +168,10 @@ def item(id):
 def cart():
     return render_template('cart.html')
 
+
+@app.route('/dash')
+def dash():
+    return render_template('dashboard2.html')
 
 def send_sms(api_key,phone,message,sender_id):
     params = {"key":api_key,"to":phone,"msg":message,"sender_id":sender_id}
