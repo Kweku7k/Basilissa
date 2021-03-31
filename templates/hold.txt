@@ -70,3 +70,43 @@
                     </a>
     </div>
     </div>
+
+ORDER
+
+    <!-- <br> -->
+            <!-- Order in -->
+            <!-- <div class="order">
+                <div class="elip" style="margin-right: 1vh;"></div>
+                <div>
+                    <h6>Mozerrela Pizza</h6>
+                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
+                </div>
+            </div>
+            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
+        </div>
+
+        <div>
+            <div class="order">
+                <div class="elip" style="margin-right: 1vh;"></div>
+                <div>
+                    <h6>Mozerrela Pizza</h6>
+                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
+                </div>
+            </div>
+            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
+        </div> -->
+            <!-- Order out -->
+
+            maps item with subtitle
+
+            <!-- Branch -->
+          <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Dansoman</h6>
+              <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6>
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right fa-2x" style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->

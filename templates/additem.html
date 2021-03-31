@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="container">
-    <form action="" method="POST">
+    <form action="" enctype="multipart/form-data" method="POST">
 {{form.hidden_tag()}}
     
 <h1>Add Item </h1>
@@ -34,7 +34,7 @@
 
 
 <div class="form-group">
-    {{form.submit}}
+    {{form.submit (class="button-solid-black")}}
 </div>
     </form>
     </div>

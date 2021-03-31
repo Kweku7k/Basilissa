@@ -1,19 +1,16 @@
-{% extends "dash.html" %}
+{% extends "base.html" %}
 
 {% block body %}
-<div>
+<div class="container">
     <div style="display: flex; justify-content: space-between;">
-        <h4 style="margin-top: auto; margin-bottom: auto;">Inventory</h4>
+        <h4 style="margin-top: auto; margin-bottom: auto;">{{location}}</h4>
         <!-- <button class="dash-item-active" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
-        <a href="{{url_for('additem')}}">
-        <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add an item</button>
-    </a>
+        <!-- <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a category</button> -->
     </div>
     <br>
     <div class="row">
-        <div class="col-md-4">
-            <a href="{{url_for('viewdashinventory',category="Pizza")}}">
-            <div class="card" data-aos="fade-up"  style="padding:0; background-size: cover; padding:0;">
+        <div class="col-md-4 col-6">
+            <div class="card" data-aos="fade-up"  style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
                         <img src="../static/img/categories/pizza.png" style="object-fit: cover; border-radius: 10px 10px 0 0 ;" width="100%" height="100px" >
@@ -27,10 +24,9 @@
                     </div>
                 </div>
             </div>
-        </a>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -47,7 +43,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -64,7 +60,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up"   style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -81,7 +77,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -98,7 +94,7 @@
             </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -115,7 +111,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -132,7 +128,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">
@@ -149,7 +145,7 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 col-6">
             <div class="card" data-aos="fade-up" style="padding:0; background-size: cover; padding:0; ">
                 <div>
                     <div class="imgcaption" style="display: flex; justify-content: space-between;">

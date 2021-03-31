@@ -24,8 +24,8 @@ class Delivery(FlaskForm):
 class ItemForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     price = StringField('Price', validators=[DataRequired()])
-    description = StringField('Description', validators=[DataRequired()])
-    image = FileField('Add a picture', validators=[FileAllowed(['jpg', 'png'])])
+    description = StringField('Description', widget=TextArea(), validators=[DataRequired()])
+    image = FileField('Add a picture', validators=[FileAllowed(['jpg', 'png', 'png'])])
     category = SelectField('Category', choices=[('Pizza', 'Pizza'),('Chineese','Chineese'),('Cocktails','Cocktails'),('Shawarma','Shawarma'),('Chicken','Chicken'),('Rice','Rice')])
     submit = SubmitField('Submit')
     

@@ -423,7 +423,8 @@ font-family: 'Poppins', 'sans-serif';
 .card{
     border-radius: 10px;
     padding: 20px;
-    border: none
+    border: none;
+    margin-bottom: 5vh;
 }
 
 .info-block{
@@ -432,4 +433,62 @@ font-family: 'Poppins', 'sans-serif';
 
 .order{
     display: flex;
+}
+
+.card .status{
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-card{
+    border-radius: 10px;
+    /* padding: 20px; */
+    border: none;
+    margin-bottom: 5vh;
+    background-size: cover; 
+    padding: 0;
+}
+
+.caption{
+    /* margin-top: 10vh;  */
+    background-color: white; 
+    position: relative; 
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    width: 100%; 
+    border-radius: 0 0 10px 10px; 
+    padding: 10px;
+}
+
+.imgcaption{
+    /* margin-top: 10vh;  */
+    /* background-color: white;  */
+    position: relative; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    width: 100%; 
+    border-radius:10px; 
+    /* padding: 10px; */
+}
+
+.caption h5{
+    font-weight: 700;
+}
+
+.card-outline{
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.118);
+        margin: 0;
+        margin-bottom: 5vh;
+}
+
+.card-outline h6{
+    margin-bottom: 0;
+}
+
+a:hover{
+    text-decoration: none;
 }

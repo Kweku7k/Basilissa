@@ -1,39 +1,107 @@
 {% extends "dash.html" %}
 
 {% block body %}
-<h4>Orders</h4>
+<!-- <div class="container"> -->
+    <div style="display: flex; justify-content: space-between;">
+        <h4 style="margin-top: auto; margin-bottom: auto;">Pending Orders</h4>
+        <!-- <button class="dash-item-active" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-eye" style="padding-right: 10px;"></i> View All Orders</button>
+        
+    </div>
 <br>
 <div class="row">
+    <!-- In -->
     <div class="col-md-4">
-        <div class="card">
+        <div class="card" data-aos="fade-up" data-aos-delay="1000">
             <h6>Order #0001</h6>
-            <h6 class="text-muted" style="font-weight:300">22nd February 2021</h6>
-            <br>
-            <!-- Order in -->
+            <h6 class="text-muted" >Nana Kweku Adumatta</h6>
+            <h6 class="text-muted" style="font-weight:300">22nd February 2021, 08:03 AM</h6>
             <div>
-            <div class="order">
-                <div class="elip" style="margin-right: 1vh;"></div>
+            
+            <div class="status">
                 <div>
-                    <h6>Mozerrela Pizza</h6>
-                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
+                    <h6 style="font-weight: 300;">x2 items</a></h6>
+                    <h6>Ghc 116.00</h6>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
                 </div>
             </div>
-            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
-        </div>
-
-        <div>
-            <div class="order">
-                <div class="elip" style="margin-right: 1vh;"></div>
-                <div>
-                    <h6>Mozerrela Pizza</h6>
-                    <h6>Ghc 58.00 <span style="margin-left:auto;">x2</span> </h6>
-                </div>
-            </div>
-            <hr style="width: 80%; margin-left: auto; margin-right: auto;" >
-        </div>
-            <!-- Order out -->
-            <h6><a href="#"><u>View all</u></a></h6>
         </div>
     </div>
 </div>
+<!-- Out -->
+
+    <!-- In -->
+    <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="1500">
+            <h6>Order #0002</h6>
+            <h6 class="text-muted" >Derrick Demor</h6>
+            <h6 class="text-muted" style="font-weight:300">29th February 2021, 08:03 AM</h6>
+            <div>
+            
+            <div class="status">
+                <div>
+                    <h6 style="font-weight: 300;">x2 items</a></h6>
+                    <h6>Ghc 316.00</h6>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Out -->
+
+    <!-- In -->
+    <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="2000">
+            <h6>Order #0003</h6>
+            <h6 class="text-muted" >Adoye Boakye</h6>
+            <h6 class="text-muted" style="font-weight:300">1st March 2021, 08:03 AM</h6>
+            <div>
+            
+            <div class="status">
+                <div>
+                    <h6 style="font-weight: 300;">x3 items</a></h6>
+                    <h6>Ghc 36.00</h6>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Out -->
+
+    <!-- In -->
+    <div class="col-md-4">
+        <div class="card" data-aos="fade-up" data-aos-delay="2500">
+            <h6>Order #0004</h6>
+            <h6 class="text-muted" >Nana Kweku Adumatta</h6>
+            <h6 class="text-muted" style="font-weight:300">6th March 2021, 08:03 AM</h6>
+            <div>
+            
+            <div class="status">
+                <div>
+                    <h6 style="font-weight: 300;">x7 items</a></h6>
+                    <h6>Ghc 306.00</h6>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Out -->
+
+</div>
+<!-- </div> -->
 {% endblock %}

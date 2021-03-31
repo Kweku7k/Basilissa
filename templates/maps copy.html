@@ -2,16 +2,15 @@
 <html>
   <head>
     <title>Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet">
+    
 <!-- Menu Header -->
     <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style type="text/css">
       /* Set the size of the div element that contains the map */
       #map {
@@ -143,19 +142,173 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   <body>
     <!-- <h3>My Google Maps Demo</h3> -->
     <!--The div element for the map -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <a class="navbar-brand" href="{{url_for('index')}}"><img width="70" height="70" src="../static/img/logo.jpg"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="margin-right: auto; margin-left: auto;">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url_for("index")}}"><h6 class="nav-item-active">Home</h6><span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Meal Of The Day</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">About Us</h6></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Branches</h6></a>
+          </li>
+        </ul>
+          {% if current_user %}
+          <a href="{{url_for('account')}}">
+            <button class="button-regular-black my-2 my-sm-0 mr-3">Order Now</button>
+          </a>
+          <a href="{{url_for('account')}}">
+            <button class="button-solid-black my-2 my-sm-0">Order Now</button>
+          </a>
+          {% else %}
+          <a href="{{url_for('login')}}">
+          <button class="btn btn-outline-success my-2 my-sm-0">Login</button>
+          </a>
+          {% endif %}
+      </div>
+    </nav>
+
+
+<section >
+  <div class="container">
+
     <div class="row">
-      <div class="container">
+      <br>
+
         <div class="col-md-6">
-          <!-- <div id="map">
-          </div> -->
-          <h4>Hello</h4>
+          <div id="map">
+          </div>
+          <!-- <h4>Hello</h4> -->
         </div>
         <div class="col-md-6">
-          <h4>Open Mind</h4>
-          <h4>Problemmmm</h4>
+          
+          <h4>Find A Branch Near Me</h4>
+          <div class="card-outline strip" style="box-shadow: none; background-color: #1a1a1a28; border: 1px solid black; margin-bottom: 0; padding: 15px;">
+           <form style="width: 100%; " action="">
+             <div class="form-group" style="margin-bottom: 0;">
+               <label style="padding: 0; margin-bottom: 0;">Enter an address</label>
+               <input style="width: 100%;  border: none; background-color: transparent; padding: 0; " class="form-control" type="text" placeholder="Please enter an address">
+              </div>
+           </form>
+            <div style="display: flex;">
+                <i class="fas fa-search " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <br>
+        <h4>Locations</h4>
+          <!-- Branch -->
+          <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Dansoman</h6>
+              <!-- <h6 style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Labone</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Afienya</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Dansoman</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Tema</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Accra Mall</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>West Hills Mall</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
+           <!-- Branch -->
+           <div class="card-outline strip" style="box-shadow: none;">
+            <div>
+              <h6>Achimota Mall</h6>
+              <!-- <h6 class="support" style="color: rgba(0, 0, 0, 0.315); font-weight: 400;">Subtitle</h6> -->
+            </div>
+            <div style="display: flex;">
+                <i class="fas fa-angle-right " style="justify-content: center; align-items: center; margin: auto; color: black;"></i>
+            </div>
+          </div>
+          <!-- End -->
+
         </div>
       </div>
     </div>
+  </section>
+
+
     
     <!-- <div class="overlay"> -->
       

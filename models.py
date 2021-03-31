@@ -22,6 +22,7 @@ class Item(db.Model):
     price = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     category = db.Column(db.String, nullable=False)
+    image_file = db.Column(db.String(200), default='default.png')
     status = db.Column(db.Boolean, default=True)
 
     def __repr__(self):

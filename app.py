@@ -6,6 +6,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 # from flask_session import Session
 
+import secrets
+import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -21,6 +23,20 @@ from models import *
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    print(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
+    form_picture.save(picture_path)
+    print ("The picture name is" + picture_fn)
+
+    return picture_fn
+
+
+
 @app.route('/')
 def index():
     return render_template('landingpage.html', title = 'Basillisa')
@@ -29,7 +45,7 @@ def index():
 def menu(location):
     print(location)
     session['location'] = location
-    return render_template('menu.html', location=location)
+    return render_template('menu2.html', location=location)
 
 @app.route("/summary", methods=['POST','GET'])
 def summary():
@@ -84,15 +100,21 @@ def delivery():
 def maps():
     return render_template('maps copy.html')
 
+@app.route('/addrider')
+def addrider():
+    return render_template('add-rider.html', title='Riders')
+
 @app.route('/account')
 def account():
     return render_template('account.html')
 
 @app.route('/dashboard')
 def dashboard():
-    tot = Item.query.all()
-    total = len(tot)
-    return render_template('dash-dashboard.html', total=total, title='Dashboard')
+    inventory = Item.query.all()
+    inventoryTotal = len(inventory)
+    # riders = Riders.query.all()
+    # ridersTotal = len(riders)
+    return render_template('dash-dashboard.html', inventory = inventoryTotal, title='Dashboard')
 
 @app.route('/dash-orders')
 def dashorders():
@@ -100,11 +122,18 @@ def dashorders():
 
 @app.route('/dash-inventory')
 def dashinventory():
-    return render_template('tem.html', title='Inventory')
+    return render_template('dash-inventory.html', title='Inventory')
+
+@app.route('/dash-inventory/<string:category>')
+def viewdashinventory(category):
+    print(category)
+    items = Item.query.all()
+    print(items)
+    return render_template('dash-categories.html', title='Inventory', category=category, items=items)
 
 @app.route('/dash-riders')
 def dashriders():
-    return render_template('tem.html', title='Riders')
+    return render_template('dash-riders.html', title='Riders')
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
@@ -129,7 +158,7 @@ def explore(itemname):
     print(items)
     location = session['location']
     print(location)
-    return render_template('explore.html', items=items)
+    return render_template('explore2.html',)
 
 @app.route('/branches')
 def branches():
@@ -143,11 +172,16 @@ def riders():
 def additem():
     form = ItemForm()
     if form.validate_on_submit():
+        pic = 'burger.jpg'
+        if form.image.data:
+            print('YO!!!!!!!!! IT IS OVER HERE!!!')
+            pic= save_picture(form.image.data)
+        item = Item(name = form.name.data, price=form.price.data, description=form.description.data, category=form.category.data, image_file = pic)
         flash (f'New Item has been added','success')
-        item = Item(name = form.name.data, price=form.price.data, description=form.description.data, category=form.category.data)
         db.session.add(item)
         db.session.commit()
-        return redirect(url_for('items'))
+        print(item.image_file)
+        return redirect(url_for('viewdashinventory',category=form.category.data))
     return render_template('additem.html', form=form)
 
 @app.route('/item/<int:id>', methods=['POST','GET'])
@@ -159,9 +193,12 @@ def item(id):
         form.price.data = item.price
         form.description.data = item.description
     if request.method == 'POST':
-        newitem = Item(name = form.name.data, price=form.price.data, description = form.description.data)
-        db.session.commit()
-        return redirect(url_for('items'))
+        item = Item(name = form.name.data, price=form.price.data, description = form.description.data)
+        try:
+            db.session.commit()
+        except:
+            print('Hello')
+        return redirect(url_for('viewdashinventory',category=form.category.data))
     return render_template('item.html', item=item, form=form)
 
 @app.route('/cart')
@@ -236,9 +273,12 @@ def items():
 def delete(id):
     print(id)
     item = Item.query.filter_by(id=id).first()
+    category = item.category
+    # os.remove()
     db.session.delete(item)
     db.session.commit()
-    return redirect('/items')
+    flash('Item has been deleted successfully', 'danger')
+    return redirect(url_for('viewdashinventory',category=category))
 
 if __name__ == '__main__':
     app.run(debug=True)
