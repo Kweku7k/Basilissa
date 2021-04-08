@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+  }
+
+
 body{
     font-family: 'Poppins','sans-serif';
 
@@ -215,6 +220,16 @@ font-family: 'Poppins', 'sans-serif';
     border-radius: 12px;
     font-family: 'Poppins', 'sans-serif';
     }
+
+.button-solid-green{
+    background-color:green;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', 'sans-serif';
+}
+    
 
 .button-regular-black{
     background-color: transparent;

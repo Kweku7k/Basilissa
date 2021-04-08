@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <!-- <script src="{{ url_for('static',filename='js/main.js')}}"></script> -->
+<script src="{{ url_for('static',filename='js/main.js')}}"></script>
+
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -40,13 +42,13 @@
               <a class="nav-link" href="{{url_for("index")}}"><h6 class="nav-item-active">Home</h6><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Meal Of The Day</h6></a>
+              <a class="nav-link" href="#mealoftheday"><h6 class="nav-item">Meal Of The Day</h6></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">About Us</h6></a>
+              <a class="nav-link" href="#about"><h6 class="nav-item">About Us</h6></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Branches</h6></a>
+              <a class="nav-link" href="#branches"><h6 class="nav-item">Branches</h6></a>
             </li>
           </ul>
             {% if current_user %}

@@ -4,7 +4,7 @@
 
 <div class="wrapper">
  
-<section>
+<section id="home">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -18,7 +18,9 @@
                 <br>
                 <br>
                 <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" class="flex">
-                    <button class="button-solid-black" style="margin-right: 24px; margin-bottom: 24px;">Find a branch near me <i class="fas fa-arrow-right"></i></button>
+                    <a href="{{url_for('maps')}}">
+                        <button class="button-solid-black" style="margin-right: 24px; margin-bottom: 24px;">Find a branch near me <i class="fas fa-arrow-right"></i></button>
+                    </a>
                     <button class="button-regular-black" style="margin-bottom: 24px;">Explore Our Menu</button>
                 </div>
             </div>
@@ -30,7 +32,7 @@
 </section>
 
 
-<section>
+<section id="mealoftheday">
     <div class="container">
         <div style="display: flex; justify-content: space-between;">
         <div>
@@ -53,6 +55,7 @@
                 <h6 class="support" style="font-size: 24px;">GHS 34.90</h1>
                 </div>
                 <div>
+                    <a href="{{url_for('maps')}}"
                     <button class="button-solid-yellow">Order Now</button>
                 </div>
 
@@ -109,16 +112,16 @@
 
 </section>
 
-<section>
+<section id="about">
     <div class="wrapper">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <h6 class="support" style="color: #FEBE19;" data-aos="fade-right">ABOUT US</h6>
                 <br>
-                <h4 data-aos-delay="1000" data-aos="fade-right" class="header" style="font-size: 40px;">Nothing brings people together like good food</h4>
+                <h4 data-aos-delay="100" data-aos="fade-right" class="header" style="font-size: 40px;">Nothing brings people together like good food</h4>
                 <br>
-                <h6 data-aos-delay="1500" data-aos="fade-right" class="support-regular">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
+                <h6 data-aos-delay="150" data-aos="fade-right" class="support-regular">Some supporting text not to neccessarily contrast, but you know... to make the UI beautifyl, aesthetic and pleasant. Some supporting text</h6>
             </div>
             <div class="col-md-6">
                 <img src="../static/img/Chef.png" class="middle-img" style="width: 100%;" alt="">
@@ -129,7 +132,7 @@
 </section>
 
 
-<section class="branches">
+<section id="branches" class="branches">
     <div class="container">
         <div class="row">
             <div class="col-md-6" style="margin-bottom: 24px;">
@@ -142,7 +145,7 @@
 
                 
 
-                <div data-aos="fade-up" data-aos-delay="1000">
+                <div data-aos="fade-up" >
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -157,7 +160,7 @@
                 </div>
 
 
-                <div data-aos="fade-up" data-aos-delay="1500">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -171,7 +174,7 @@
                     <hr>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="2000">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -185,7 +188,7 @@
                     <hr>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="2500">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -199,7 +202,7 @@
                     <hr>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="3000">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -213,7 +216,7 @@
                     <hr>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="3500">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>
@@ -227,7 +230,7 @@
                     <hr>
                 </div>
 
-                <div data-aos="fade-up" data-aos-delay="4000">
+                <div data-aos="fade-up">
                     <!-- <div class="elip"></div> -->
                     <div style="display:flex; justify-content: space-between;">
                         <div>

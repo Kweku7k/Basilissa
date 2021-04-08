@@ -158,7 +158,7 @@ def explore(itemname):
     print(items)
     location = session['location']
     print(location)
-    return render_template('explore2.html',)
+    return render_template('explore2.html', items = items, itemname=itemname)
 
 @app.route('/branches')
 def branches():

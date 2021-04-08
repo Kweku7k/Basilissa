@@ -7,30 +7,46 @@
 
 order = []
 function addToCart(event){
-button = event.target
-holder = button.parentElement
-id = holder.getElementsByClassName('id')[0].innerText
-button.classList.toggle("mystyle");
-console.log(holder)
-if (button.style.color !== 'black'){
-  console.log(button)
+  button = event.target
+  buttonHolder = button.parentElement
+  holder = button.parentElement.parentElement
+  id = holder.getElementsByClassName('id')[0].innerText
+  console.log(holder)
   console.log(id)
-  order.push(parseInt(id))
-  console.log(order)
-}
+  add = '<button class="button-solid-yellow" onclick="addToCart(event)"><i class="fas fa-plus"></i> Add To Cart</button>'
+  added = '<button class="button-solid-green" onclick="addToCart(event)"><i class="fas fa-check"></i> Added To Cart</button>'
+  if (button.innerText !== 'Added To Cart'){
+    console.log(button.innerText)
+    buttonHolder.innerHTML = added
+  }
+  else{
+    buttonHolder.innerHTML = add
+  }
+  done()
+// console.log(holder)
+//   console.log(button)
+//   console.log(id)
+//   order.push(parseInt(id))
+//   console.log(order)
+// }
 // button.style.background = "black"
-// button.innerText = "Added To Cart"
 // button.style.color = "yellow"
 }
 
 function done(){
-  button = document.getElementsByClassName('button');
+  buttons = document.getElementsByClassName('button-solid-green');
   var finalarray = []
-  for (i = 0; i < button.length; i++) {
-    if(button[i].classList.contains('mystyle')){
-      var card = button[i].parentElement
+  console.log(finalarray)
+  console.log(buttons)
+  console.log(buttons[0])
+  for (i = 0; i < buttons.length; i++) {
+    if(buttons[i].innerText = 'Added To Cart'){
+      console.log('In the mix')
+      var card = buttons[i].parentElement.parentElement
+      console.log(card)
       var id = card.getElementsByClassName('id')[0].innerText
-      console.log(id)
+      id = parseInt(id)
+      console.log("id = " + id)
       finalarray.push(id)
       console.log(finalarray)
     }
@@ -49,7 +65,6 @@ function done(){
 function GoToCart(m_array){
   console.log(m_array)
   localStorage.setItem("cart", m_array);
-  document.getElementById('storage').value = m_array
 }
 
 function handle_data(){
