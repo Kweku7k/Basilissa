@@ -195,14 +195,21 @@ def item(id):
     form = ItemForm()
     # item = Item.query.filter_by(id = id).first()
     item = Item.query.filter_by(id = id).first()
+    print(item.image_file)
     if request.method == 'POST':
         if form.validate_on_submit():
+            pic = item.image_file
+            print(pic)
+            if form.image.data:
+                print('There is a picture in the form')
+                pic= save_picture(form.image.data)
             print('Form has validated successfully')
             print(form.price.data)
             print(item)
             item.name = form.name.data
             item.price = form.price.data
             item.description = form.description.data
+            item.image_file = pic
             db.session.commit()
             print(item.name)
             return redirect(url_for('viewdashinventory',category=form.category.data))
