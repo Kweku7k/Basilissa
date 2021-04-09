@@ -193,18 +193,23 @@ def additem():
 @app.route('/item/<int:id>', methods=['POST','GET'])
 def item(id):
     form = ItemForm()
-    item = Item.query.filter_by(id=id).first()
+    # item = Item.query.filter_by(id = id).first()
+    item = Item.query.filter_by(id = id).first()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            print('Form has validated successfully')
+            print(form.price.data)
+            print(item)
+            item.name = form.name.data
+            item.price = form.price.data
+            item.description = form.description.data
+            db.session.commit()
+            print(item.name)
+            return redirect(url_for('viewdashinventory',category=form.category.data))
     if request.method == 'GET':
         form.name.data = item.name
         form.price.data = item.price
         form.description.data = item.description
-    if request.method == 'POST':
-        item = Item(name = form.name.data, price=form.price.data, description = form.description.data)
-        try:
-            db.session.commit()
-        except:
-            print('Hello')
-        return redirect(url_for('viewdashinventory',category=form.category.data))
     return render_template('item.html', item=item, form=form)
 
 @app.route('/cart', methods=['POST','GET'])
