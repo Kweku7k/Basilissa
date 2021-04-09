@@ -47,6 +47,11 @@ def menu(location):
     session['location'] = location
     return render_template('menu2.html', location=location)
 
+@app.route('/description/<int:id>')
+def description(id):
+    item = Item.query.filter_by(id=id).first()
+    return render_template('description.html', item=item)
+
 @app.route("/summary", methods=['POST','GET'])
 def summary():
     form = Delivery()
@@ -76,7 +81,7 @@ def summary():
         message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
         sender_id = "Basilissa" #11 Characters maximum
         send_sms(api_key,phone,message,sender_id)
-        return render_template('summary.html', id=orderId)
+        return redirect(url_for('reciept'))
     return render_template('delivery.html', form=form) 
 
 
@@ -118,7 +123,8 @@ def dashboard():
 
 @app.route('/dash-orders')
 def dashorders():
-    return render_template('dash-orders.html', title='Orders')
+    orders = Order.query.all()
+    return render_template('dash-orders.html', title='Orders', orders = orders)
 
 @app.route('/dash-inventory')
 def dashinventory():
@@ -201,9 +207,20 @@ def item(id):
         return redirect(url_for('viewdashinventory',category=form.category.data))
     return render_template('item.html', item=item, form=form)
 
-@app.route('/cart')
+@app.route('/cart', methods=['POST','GET'])
 def cart():
-    return render_template('cart.html')
+    cart = request.form['cart']
+    print(str(cart))
+    cartArray =  cart.split(",")
+    print("cart array")
+    print(len(cartArray))
+    items = []
+    for x in cartArray:
+        print(x)
+        item = Item.query.filter_by(id = x).first()
+        items.append(item)
+        print(item)
+    return render_template('cart.html', items = items)
 
 
 @app.route('/dash')
@@ -263,6 +280,10 @@ def login():
             flash (f'The account cant be found', 'danger')
     return render_template('login.html', form=form)
 
+
+@app.route("/reciept")
+def reciept():
+    return render_template('reciept.html')
 
 @app.route('/items')
 def items():

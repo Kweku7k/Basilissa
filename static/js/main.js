@@ -56,6 +56,8 @@ function done(){
     }
   }
   GoToCart(finalarray)
+  document.getElementById("cart").value=finalarray
+
   // console.log(button)
   // if (button[1].classList.contains('button')){
   //   console.log('kaish')

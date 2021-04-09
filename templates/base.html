@@ -5,27 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static', filename="favicon.png")}}"/>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Menu Header -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet"> -->
-    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/091f1122a7.js" crossorigin="anonymous"></script>
-    <!-- Data - AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<!-- <script src="{{ url_for('static',filename='js/main.js')}}"></script> -->
 <script src="{{ url_for('static',filename='js/main.js')}}"></script>
-
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
     <title>{{title}}</title>
     {% block head %}{% endblock %}
   </head>
@@ -52,11 +40,11 @@
             </li>
           </ul>
             {% if current_user %}
-            <a href="{{url_for('account')}}">
+            <a href="{{url_for('maps')}}">
               <button class="button-regular-black my-2 my-sm-0 mr-3">Order Now</button>
             </a>
             <a href="{{url_for('account')}}">
-              <button class="button-solid-black my-2 my-sm-0">Order Now</button>
+              <button class="button-solid-black my-2 my-sm-0">Login</button>
             </a>
             {% else %}
             <a href="{{url_for('login')}}">

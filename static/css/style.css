@@ -285,8 +285,26 @@ font-family: 'Poppins', 'sans-serif';
     padding: 20px 40px;
     border: none;
     border-radius: 20px;
-    width: 100%;
+    width: 50%;
+    font-weight: 300;
+    margin: auto;
     
+}
+
+.whitespace{
+    height: 100px;
+    width: 100px;
+    background-color: transparent;
+}
+
+.cart_name{
+    font-size: 16px;
+}
+
+
+.card_price{
+    font-size: 16px;
+
 }
 
 

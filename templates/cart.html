@@ -3,22 +3,25 @@
 {% block body %}
 
 <div class="container">
-        <h1> Your Cart </h1>
-        <hr>
+        <h4> Your Cart </h4>
+
         <h6 id="result"></h6>
+
         {% for item in items %}
-    <div class="flex" style="display: flex; ">
-        <div style="display: flex;">
+        <div class="flex" style="display: flex; border: 1px solid grey; padding: 20px; background-color: #F8F8F8; border-radius: 10px; margin-bottom: 10px;">
+        <!-- <div style="display: flex;">
             <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden;">
                 <img style="width: 100%;" src="../static/img/bofrot.jpg">
             </div>
-        </div>
+        </div> -->
         <div style="width: 100%; margin-left: 5vw; margin-top: 10px;">
             <h6 class="cart-id" id="cart_id" style="display: none;">{{item.id}}</h6>
-            <h4 style="margin-left:0 ;" class="cart_name">{{item.name}}</h4>
             <div style="display: flex; justify-content: space-between;">
-                <h5 class="text-muted" style="margin-top: auto; margin-bottom: auto;" >Ghc {{item.price}}</h5>
-                <div class="controls" style="display: flex; background-color:yellow; padding: 10px; border-radius: 20px; width: 30vw; justify-content: space-around;">
+                <div>
+                <h4 style="margin-left:0 ;" class="cart_name">{{item.name}}</h4>
+                <h6 class="card_price text-muted" style="margin-top: auto; margin-bottom: auto;">Ghc {{item.price}}</h6>
+                </div>
+                <div class="controls" style="display: flex; padding: 10px; border-radius: 20px; width: 30vw; justify-content: space-around;">
                     <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-plus" onclick="increase(event)"></i>
                     <h4 style="margin-top: auto; margin-bottom: auto;" class="quantity">1</h4>
                     <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-minus"
@@ -29,12 +32,13 @@
     </div>
     {% endfor %}
 
+
     
     
     <div style="text-align: center; margin-top: 10vh;">
         <form action="{{ url_for('summary') }}" method="POST">
             <input style="display: none;" id="cart" type="text" name="cart">
-            <button type="submit" style="text-decoration: none; color: black; font-weight: bold; " class="hover-button" onclick="handle_data()">Proceed</button>
+            <button type="submit" class="button-solid-black" onclick="handle_data()"><i class="fas fa-hotdog"></i> Proceed</button>
         </form>
     </div>
 

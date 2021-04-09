@@ -11,96 +11,31 @@
 <br>
 <div class="row">
     <!-- In -->
+    {% for order in orders %}
+    
     <div class="col-md-4">
-        <div class="card" data-aos="fade-up" data-aos-delay="1000">
-            <h6>Order #0001</h6>
-            <h6 class="text-muted" >Nana Kweku Adumatta</h6>
-            <h6 class="text-muted" style="font-weight:300">22nd February 2021, 08:03 AM</h6>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <h6>Order #{{order.id}}</h6>
+            <h6 class="text-muted" >{{order.user}}</h6>
+            <h6 class="text-muted" style="font-weight:300">{{order.date_created.strftime("%m/%d/%Y, %H:%M:%S")}}</h6>
             <div>
             
             <div class="status">
                 <div>
-                    <h6 style="font-weight: 300;">x2 items</a></h6>
+                    <h6 style="font-weight: 300;">{{order.phone}}</a></h6>
                     <h6>Ghc 116.00</h6>
                 </div>
                 <div>
-                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
-                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
+                    <i class="fas fa-check-circle fa-2x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-2x" style="color: red;"></i>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Out -->
+{% endfor %}
 
-    <!-- In -->
-    <div class="col-md-4">
-        <div class="card" data-aos="fade-up" data-aos-delay="1500">
-            <h6>Order #0002</h6>
-            <h6 class="text-muted" >Derrick Demor</h6>
-            <h6 class="text-muted" style="font-weight:300">29th February 2021, 08:03 AM</h6>
-            <div>
-            
-            <div class="status">
-                <div>
-                    <h6 style="font-weight: 300;">x2 items</a></h6>
-                    <h6>Ghc 316.00</h6>
-                </div>
-                <div>
-                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
-                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Out -->
-
-    <!-- In -->
-    <div class="col-md-4">
-        <div class="card" data-aos="fade-up" data-aos-delay="2000">
-            <h6>Order #0003</h6>
-            <h6 class="text-muted" >Adoye Boakye</h6>
-            <h6 class="text-muted" style="font-weight:300">1st March 2021, 08:03 AM</h6>
-            <div>
-            
-            <div class="status">
-                <div>
-                    <h6 style="font-weight: 300;">x3 items</a></h6>
-                    <h6>Ghc 36.00</h6>
-                </div>
-                <div>
-                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
-                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Out -->
-
-    <!-- In -->
-    <div class="col-md-4">
-        <div class="card" data-aos="fade-up" data-aos-delay="2500">
-            <h6>Order #0004</h6>
-            <h6 class="text-muted" >Nana Kweku Adumatta</h6>
-            <h6 class="text-muted" style="font-weight:300">6th March 2021, 08:03 AM</h6>
-            <div>
-            
-            <div class="status">
-                <div>
-                    <h6 style="font-weight: 300;">x7 items</a></h6>
-                    <h6>Ghc 306.00</h6>
-                </div>
-                <div>
-                    <i class="fas fa-check-circle fa-3x" style="color: green;"></i>
-                    <i class="fas fa-times-circle fa-3x" style="color: red;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Out -->
 
 </div>
 <!-- </div> -->
