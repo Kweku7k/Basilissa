@@ -2,19 +2,21 @@
 
 {% block body %}
 <div class="container">
-    <h4>Order Id: 20</h4>
+    <h4>Order Id: {{id}}</h4>
     <div style="text-align: center;">
         <h6>Your Total</h6>
-        <h1>Ghc 300</h1>
+        <h1 style="font-weight: 900; font-size: 80px;">Ghc 300</h1>
         <h6>You will recieve a confirmation call from Basilissa =, thank you</h6>
         
-            <div>
-                <button class="button-solid-yellow">Order Again</button>
+            <div style="margin-bottom: 20px;">
+                <a href="{{url_for('index')}}">
+                    <button class="button-solid-yellow" >Order Again</button>
+                </a>
             </div>
-            <div>
+            <div style="margin-bottom: 20px;">
                 <button class="button-solid-yellow">Report Situation</button>
             </div>
-            <div>
+            <div style="margin-bottom: 20px;">
                 <button class="button-solid-yellow">Call Basilissa</button>
             </div>
     </div>

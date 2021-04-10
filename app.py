@@ -81,7 +81,7 @@ def summary():
         message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
         sender_id = "Basilissa" #11 Characters maximum
         send_sms(api_key,phone,message,sender_id)
-        return redirect(url_for('reciept'))
+        return redirect(url_for('reciept', id=orderId))
     return render_template('delivery.html', form=form) 
 
 
@@ -293,9 +293,11 @@ def login():
     return render_template('login.html', form=form)
 
 
-@app.route("/reciept")
-def reciept():
-    return render_template('reciept.html')
+@app.route("/reciept/<int:id>")
+def reciept(id):
+    print(id)
+    order = Order.query.filter_by(id=id).first()
+    return render_template('reciept.html', id=id)
 
 @app.route('/items')
 def items():

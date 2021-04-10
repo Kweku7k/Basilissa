@@ -10,7 +10,7 @@
       /* The width is the width of the web page */
     }
   </style>
-  <script>
+  <!-- <script>
     window.onload = getLocation();
   
     // Initialize and add the map
@@ -57,7 +57,7 @@
   }
 
     
-  </script>
+  </script> -->
 {% endblock %}
 
 
@@ -92,7 +92,7 @@
 
 <div class="form-group" style="display: none;">
   {{form.location.label()}}
-  {{form.location (class="form-control", id="demo")}}
+  {{form.location (class="form-control", id="demo", value="North west of the border")}}
 </div>
 
 <div class="form-group" >
@@ -108,12 +108,12 @@
     </div> -->
 
 
-    <script
+    <!-- <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQbDoqr9mxC1QEEcWLsyjKg428R0YgeE&callback=initMap&libraries=&v=weekly"
       async
     >
 
-  </script>
+  </script> -->
 
 
 {% endblock %}
