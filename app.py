@@ -10,7 +10,8 @@ import secrets
 import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://SG-Cluster1-1945-pgsql-master.servers.mongodirector.com:5432/test'
 db = SQLAlchemy(app)
 # session = Session(app)
 # SESSION_TYPE = 'filesystem'
