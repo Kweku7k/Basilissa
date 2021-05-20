@@ -1,17 +1,39 @@
+import datetime
+from telegram import *
+from telegram.ext import *
 import urllib.request, urllib.parse
 import urllib
 from flask import Flask, render_template, redirect, url_for, flash, request, session
-from forms import Registration, Delivery, ItemForm, LoginForm
+from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm, BranchesForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 # from flask_session import Session
-
 import secrets
 import os
+from pathlib import Path
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://SG-Cluster1-1945-pgsql-master.servers.mongodirector.com:5432/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql://adumatta:0vc.YyvgQIjMHr5d@SG-Cluster1-1945-pgsql-master.servers.mongodirector.com:6432/testdb2?sslmode="require")'
+# DATABASE_URI = "postgresql://adumatta:0vc.YyvgQIjMHr5d@SG-Cluster1-1945-pgsql-master.servers.mongodirector.com:6432/testdb2"
+# DATABASE_URI = "postgresql://sgpostgres:0vc.YyvgQIjMHr5d@SG-Cluster1-1945-pgsql-master.servers.mongodirector.com:5432/postgres"
+DATABASE_URI = "postgresql://sgpostgres:mu6m2uR7V5%40KMuQF@SG-MultiClusterTest-1969-pgsql-master.servers.mongodirector.com:5432/postgres"
+# ssl_mode = " sslmode=verify-ca"
+# data_folder = Path("ca.pem")
+# print(data_folder)
+# ssl_root_cert = "&sslrootcert="
+# DATABASE_URI += ssl_mode 
+# + ssl_root_cert 
+# print("CA.PEM file:" + str(data_folder))
+# f = open(data_folder)
+# print(f.read())
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
+print("DB IS" + DATABASE_URI)
+# conn = psycopg2.connect(dbname='testdb2', user='adumatta', password='0vc.YyvgQIjMHr5d', host='SG-Cluster1-1945-pgsql-master.servers.mongodirector.com', port='5432', sslmode='require')
+# app.config['SQLALCHEMY_DATABASE_URI'] =  conn
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'psycopg2.connect(host="SG-Cluster1-1945-pgsql-master.servers.mongodirector.com" user="adumatta" password="Babebabe123" dbname="testdb2" port=6432)'
 db = SQLAlchemy(app)
 # session = Session(app)
 # SESSION_TYPE = 'filesystem'
@@ -37,10 +59,57 @@ def save_picture(form_picture):
     return picture_fn
 
 
+# bot = Bot("1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0")
+# updater = Updater("1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0", use_context=True)
+# dispatcher = updater.dispatcher
+
+# def test_function(update:Update,context:CallbackContext):
+#     bot.send_message(
+#         chat_id=update.effective_chat.id,
+#         text="Charley, be like my bot dey workkkkk",
+#     )
+
+
+# start_value=CommandHandler('testone',test_function)
+# dispatcher.add_handler(start_value)
+
+
+# updater.start_polling()
+
+
+# texxt = "Try this here"
+
+
+# urlll = "https://api.telegram.org/bot1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0/sendMessage?chat_id=-573994352&text=" + texxt
+# print(urlll)
 
 @app.route('/')
 def index():
     return render_template('landingpage.html', title = 'Basillisa')
+
+
+# params = {"key":api_key,"to":phone,"msg":message,"sender_id":sender_id}
+    # url = 'https://apps.mnotify.net/smsapi?'+ urllib.parse.urlencode(params)
+    # content = urllib.request.urlopen(url).read()
+
+@app.errorhandler(404)
+def error_404(error):
+    x = datetime.now()
+    today = x.strftime("%Y/%m/%d")
+    time = x.strftime("%H:%M:%S")
+    params = "404\n" + request.url + '\n' + today + " " + time + '\n' + "You can check your logs here https://dashboard.heroku.com/apps/basilissa/logs"
+    print("texxt")
+    print(request.url)
+    print(params)
+    url = "https://api.telegram.org/bot1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0/sendMessage?chat_id=-573994352&text=" + urllib.parse.quote(params)
+    # content = urllib.request.urlopen(url).read()
+    print(today)
+    print(time)
+    # print(content)
+    # print(url)
+    # token = "1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0"
+    # chat_id = "-573994352"
+    return render_template('error.html'),404
 
 @app.route('/menu/<string:location>')
 def menu(location):
@@ -102,9 +171,13 @@ def delivery():
 
     return render_template('delivery.html', form=form)
 
-@app.route('/maps')
+@app.route('/maps', methods=['GET','POST'])
 def maps():
-    return render_template('maps copy.html')
+    form = BranchesForm()
+    if form.validate_on_submit():
+        print(form.location.data)
+        return redirect(url_for('menu', location=form.branch.data))
+    return render_template('maps copy.html', form=form)
 
 @app.route('/addrider')
 def addrider():
@@ -246,6 +319,7 @@ def send_sms(api_key,phone,message,sender_id):
     content = urllib.request.urlopen(url).read()
     print (content)
     print (url)
+
 
 @app.route('/orders')
 def orders():

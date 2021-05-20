@@ -185,7 +185,18 @@ top: -39px;
     margin-bottom: auto;
 
 }
+#branchesDropDown{
+    padding: 20px;
+}
 
+.invinsible{
+    border: transparent;
+    color: black;
+}
+
+.invinsible:focus {
+    border: white;
+  }
 
 
 .text-block {
@@ -195,6 +206,10 @@ top: -39px;
     color: white;
     width: 100%;
   }
+
+.formLine{
+    border-bottom: 1px solid black;
+}
 
 .button{
     border: none;
@@ -525,3 +540,10 @@ font-family: 'Poppins', 'sans-serif';
 a:hover{
     text-decoration: none;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    section.hero {
+      padding-top: 0;
+    }
+  }

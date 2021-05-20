@@ -5,13 +5,13 @@
 
 <h4>{{itemname}}</h4>
 <br>
-<div class="row">
+<div>
 
 
     {% for item in items %}
-<div class="col-md-4">
 
-    <div class="card"  style="position: relative;">
+
+    <!-- <div class="card"  style="position: relative;">
         <a href="{{url_for('description', id=item.id)}}">
     <img src="../static/profile_pics/{{item.image_file}}"  width="100%" height="200px"  style="border-radius: 10px; object-fit: cover;" alt="">
 
@@ -27,8 +27,32 @@
             </div>
         </div>
     
+        </div> -->
+
+        <div style="display: flex;">
+            <div class="ell" style="background-color:green; width: 100px; height: 100px; margin-right: 10px;">
+    <img src="../static/profile_pics/{{item.image_file}}"  width="100%" height="100%" style="border-radius: 10px; object-fit: cover;" alt="">
+</div>
+            <div style="width:max-content">
+                <h6 >{{item.name}}</h6>
+                <h6 class="id" style="font-weight: 400; font-size: 20px; display: none;">{{item.id}} </h1>
+                <h6 style="font-weight: 100; font-size: small; margin-bottom: 0; width:60vw">{{item.description|truncate(50)}}</h6>
+                <div style="display: flex; justify-content: space-between;">
+                    <h6 class="text-muted" style="font-weight: 100; margin-top: 10px;">Ghc{{item.price}}</h6>
+                    <!-- <div class="controls" style="display: flex; padding: 10px; border-radius: 20px; width: 100px; justify-content: space-around;">
+                        <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-plus" onclick="increase(event)"></i>
+                        <h6 style="margin-top: auto; margin-bottom: auto;" class="quantity">1</h4>
+                        <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-minus"
+                        onclick="decrease(event)"></i>
+                     </div> -->
+                    </div>
+                    <div>
+                        <button class="button-solid-yellow" onclick="addToCart(event)"><i class="fas fa-plus"></i> Add To Cart</button>
+                    </div>
+                <hr>
+            </div>
         </div>
-    </div>
+
     {% endfor %}
 </div>
 
@@ -36,7 +60,7 @@
 
 <form action="{{ url_for('cart') }}" method="POST">
     <input style="display: none;" id="cart" type="text" name="cart">
-    <div style="text-align: center; margin: auto;">
+    <div style="text-align: center; margin: auto; position: fixed; bottom: 50px; width: 100%; left:0; ">
         <button type="submit" style="text-decoration: none;  margin: auto; " class="button-solid-black" onclick="handle_data()"><i class="fas fa-hamburger"></i> Go to your cart</button>
     </div>
 </form>

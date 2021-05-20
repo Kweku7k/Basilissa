@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+
+<h4>{{itemname}}</h4>
+<br>
+<div class="row">
+
+
+    {% for item in items %}
+<div class="col-md-4">
+
+    <div class="card"  style="position: relative;">
+        <a href="{{url_for('description', id=item.id)}}">
+    <img src="../static/profile_pics/{{item.image_file}}"  width="100%" height="200px"  style="border-radius: 10px; object-fit: cover;" alt="">
+
+        </a>
+        <div style="margin-top: 2vh; display: flex; justify-content: space-between;">
+            <div style="max-width: 50%;">
+            <h6 class="id" style="font-weight: 400; font-size: 20px; display: none;">{{item.id}} </h1>
+            <h6 class="support" style="font-weight: 400; font-size: 20px;">{{item.name}}</h1>
+            <h6 class="support" style="font-size: 24px;">GHS {{item.price}}</h1>
+            </div>
+            <div>
+                <button class="button-solid-yellow" onclick="addToCart(event)"><i class="fas fa-plus"></i> Add To Cart</button>
+            </div>
+        </div>
+    
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<h4 id="cartArray"></h4>
+
+<form action="{{ url_for('cart') }}" method="POST">
+    <input style="display: none;" id="cart" type="text" name="cart">
+    <div style="text-align: center; margin: auto;">
+        <button type="submit" style="text-decoration: none;  margin: auto; " class="button-solid-black" onclick="handle_data()"><i class="fas fa-hamburger"></i> Go to your cart</button>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

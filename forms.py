@@ -33,3 +33,7 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
+
+class BranchesForm(FlaskForm):
+    branch = SelectField('Branches', choices=[('Dansoman', 'Dansoman'),('Labone','Labone'),('Afienya','Afienya'),('Dawhenya','Dawhenya'),('Tema','Tema'),('Accra Mall','Accra Mall'),('West Hills Mall','West Hills Mall'),('Achimota Mall','Achimota Mall')])
+    location = StringField('Your Location', validators=[DataRequired()])
