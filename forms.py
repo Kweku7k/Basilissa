@@ -6,10 +6,10 @@ from wtforms.widgets import TextArea
 
 class Registration(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email')
     phone = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("Password")])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
     submit = SubmitField('SignUp')
 
 class Delivery(FlaskForm):

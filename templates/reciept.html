@@ -2,24 +2,68 @@
 
 {% block body %}
 <div class="container">
-    <h4>Order Id: {{id}}</h4>
+    <h4 onload="myFunction()">Order Id: {{id}}</h4>
     <div style="text-align: center;">
         <h6>Your Total</h6>
         <h1 style="font-weight: 900; font-size: 80px;">Ghc 300</h1>
-        <h6>You will recieve a confirmation call from Basilissa =, thank you</h6>
+        <h6>You will recieve a confirmation call from Basilissa, thank you</h6>
         
             <div style="margin-bottom: 20px;">
                 <a href="{{url_for('index')}}">
-                    <button class="button-solid-yellow" >Order Again</button>
+                    <button class="button-solid-yellow" style="width: 80%;" >Order Again</button>
                 </a>
             </div>
             <div style="margin-bottom: 20px;">
-                <button class="button-solid-yellow">Report Situation</button>
+                <button class="button-solid-yellow" style="width: 80%;">Report Situation</button>
             </div>
             <div style="margin-bottom: 20px;">
-                <button class="button-solid-yellow">Call Basilissa</button>
+                <button class="button-solid-yellow" style="width: 80%;">Call Basilissa</button>
             </div>
     </div>
     
 </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <!-- <div class="modal-content"> -->
+      <div class="strip-bg" >
+        <h4>
+          Just a sec...
+        </h4>
+        <br>
+        <div>
+          <p>Would you like to create an account for a faster checkout experience?</p>
+          <div class="modal-footer">
+            <button type="button" class="button-solid-black" data-dismiss="modal">No Please</button>
+            <button type="button" class="button-solid-yellow">Lets Do It</button>
+          </div> 
+        </div>
+      </div>
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    <!-- </div> -->
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+     $("#exampleModal").trigger('click');
+  });
+  </script>
 {% endblock %}

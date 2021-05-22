@@ -102,19 +102,67 @@ function myFunction() {
   element.classList.toggle("mystyle");
 }
 
+
+function itemTotals(){
+  all = document.getElementsByClassName("card_price")
+  length = all.length - 1
+  for(i = 0; i<= length; i++ ){
+    current = all[i].innerHTML
+    amount = current.replace("Ghc ","")
+    console.log(amount)
+    amount =+ parseInt(amount)
+    itemTotals.push(amount)
+  }
+  // amount = all.replace("Ghc ","")
+  console.log(itemTotals)
+}
+
+
 function increase(event){
     initial_value = event.target.parentElement;
     console.log(initial_value);
     let quantityElement = initial_value.getElementsByClassName('quantity')[0];
     let value = quantityElement.innerHTML;
-    // increment value
+    // Find Price
+    let price = initial_value.parentElement;
+    console.log("Your price is ")
+    console.log(price)
+    amount = price.getElementsByClassName('card_price')[0].innerHTML
+    console.log(amount)
+    amount = amount.replace("Ghc ","")
+    console.log(amount)
+    // Increment Value
     let newValue = (+value + 1);
     quantityElement.innerText = newValue;
     console.log(newValue);
     let inform = event.target.parentElement.parentElement;
-    console.log(inform)
+    console.log(newValue)
+    updateItem(newValue, amount)
+  // Update the individual items
+    amount = update
+    price.getElementsByClassName('card_price')[0].innerHTML = "Ghc " + amount
+  // find the total
+    itemTotals()
+    findTotal(itemTotals)
 }
 
+function updateItem(initialValue, price ){
+  update = price * initialValue
+  console.log("Updated Value is" + update)
+}
+
+function findTotal(items){
+  //  loop through for all the totals
+  console.log(items)
+  // items = JSON.parse(items)
+  console.log(typeof(items))
+  var total = 0 
+  for (i = 0; i < items.length; i++) {
+    console.log(typeof(items[i]))
+    total += items[i];
+  }
+  console.log(total)
+}
 
 function decrease(event){
     initial_value = event.target.parentElement;
@@ -127,6 +175,7 @@ function decrease(event){
     console.log(newValue);
     let inform = event.target.parentElement.parentElement;
     console.log(inform)
+    
 }
 // 
 var button = document.getElementById("locate");

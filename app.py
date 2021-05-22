@@ -1,16 +1,17 @@
 import datetime
-from telegram import *
-from telegram.ext import *
+# from telegram import *
+# from telegram.ext import *
 import urllib.request, urllib.parse
 import urllib
 from flask import Flask, render_template, redirect, url_for, flash, request, session
-from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm, BranchesForm
+from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 # from flask_session import Session
 import secrets
 import os
 from pathlib import Path
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -41,6 +42,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
 from models import *
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -130,10 +132,11 @@ def summary():
     # print(current_user)
     branch = session['location']
     print(branch)
+    print(current_user.name)
     if request.method == 'POST':
         print('It is a post method')
-        # form.name.data = current_user.name
-        # form.phone.data = current_user.phone
+        form.name.data = current_user.name
+        form.phone.data = current_user.phone
         form.branch.data = branch
         form.items = cart
     if form.validate_on_submit():
@@ -167,7 +170,7 @@ def delivery():
         phone = "0249411910" #SMS recepient"s phone number
         message = "You have recieved a new order. please check your dashboard to confirm."
         sender_id = "Basilissa" #11 Characters maximum
-        send_sms(api_key,phone,message,sender_id)
+        # send_sms(api_key,phone,message,sender_id)
 
     return render_template('delivery.html', form=form)
 
@@ -185,7 +188,8 @@ def addrider():
 
 @app.route('/account')
 def account():
-    return render_template('account.html')
+    user = current_user
+    return render_template('account.html', user=user)
 
 @app.route('/dashboard')
 def dashboard():
@@ -225,7 +229,7 @@ def signup():
         db.session.commit()
         login_user(user)
         print(current_user)
-        flash(f'User ' + user.name +' has been created ', 'success')
+        flash(f'' + user.name +', your account has been created ', 'success')
         return redirect(url_for('index'))
     else:
         print('yawa')

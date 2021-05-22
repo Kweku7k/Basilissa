@@ -133,6 +133,38 @@ top: -39px;
     display: flex;
     justify-content: space-between;
 }
+.strip-bg{
+    background-color:white;
+    box-shadow: 5px 5px 15px 5px rgba(139, 139, 139, 0.26);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 70%;
+
+}
+.strip-nospace{
+    background-color:white ;
+    box-shadow: 5px 5px 15px 5px rgba(139, 139, 139, 0.26);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+}
+.stripIcon{
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.stripText{
+    margin-bottom: 0;
+}
+
+.pinPosition{
+    position: fixed;
+    bottom: 5vh;
+    text-align: center;
+    width: 100%;
+}
 
 .just-overlay{
     position: absolute;
