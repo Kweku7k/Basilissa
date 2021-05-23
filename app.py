@@ -4,7 +4,7 @@ import datetime
 import urllib.request, urllib.parse
 import urllib
 from flask import Flask, render_template, redirect, url_for, flash, request, session
-from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm
+from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm, UserForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 # from flask_session import Session
@@ -89,6 +89,10 @@ def save_picture(form_picture):
 def index():
     return render_template('landingpage.html', title = 'Basillisa')
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for("index"))
 
 # params = {"key":api_key,"to":phone,"msg":message,"sender_id":sender_id}
     # url = 'https://apps.mnotify.net/smsapi?'+ urllib.parse.urlencode(params)
@@ -132,13 +136,15 @@ def summary():
     # print(current_user)
     branch = session['location']
     print(branch)
-    print(current_user.name)
     if request.method == 'POST':
         print('It is a post method')
-        form.name.data = current_user.name
-        form.phone.data = current_user.phone
-        form.branch.data = branch
-        form.items = cart
+        if current_user == None:
+            print("Not Logged in Yet")
+        else:
+            form.name.data = current_user.name
+            form.phone.data = current_user.phone
+            form.branch.data = branch
+            form.items = cart
     if form.validate_on_submit():
         order = Order(order = cart, user = form.name.data, phone = form.phone.data, location = form.location.data, branch = form.branch.data )
         db.session.add(order)
@@ -158,6 +164,30 @@ def summary():
     return render_template('delivery.html', form=form) 
 
 
+@app.route('/user', methods=['POST','GET'])
+def viewuser():
+    form = UserForm()
+    user = User.query.filter_by(id = current_user.id).first()
+    if request.method == 'GET':
+        form.name.data = current_user.name
+        form.email.data = current_user.email
+        form.phone.data = current_user.phone
+    if form.validate_on_submit:
+        User(name = form.name.data)
+        db.session.commit()
+        print("EII")
+        # return redirect(url_for("account"))
+    return render_template('viewuser.html', user=user, form=form)
+
+
+@app.route('/feedback')
+def feedback():
+   pass
+
+@app.route('/complaint')
+def complaint():
+   pass
+
 @app.route('/hoh', methods=['POST','GET'])
 def delivery():
     form = Delivery()
@@ -173,6 +203,12 @@ def delivery():
         # send_sms(api_key,phone,message,sender_id)
 
     return render_template('delivery.html', form=form)
+
+@app.route('/account/orders')
+def accountorders():
+    print(current_user)
+    orders = Order.query.filter_by(user = current_user.name).all()
+    return render_template('accountorders.html', orders=orders)
 
 @app.route('/maps', methods=['GET','POST'])
 def maps():

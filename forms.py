@@ -12,6 +12,13 @@ class Registration(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
     submit = SubmitField('SignUp')
 
+class UserForm(FlaskForm):
+    name = StringField('Name', validators=[DataRequired()])
+    email = StringField('Email')
+    phone = StringField('Phone', validators=[DataRequired()])
+    submit = SubmitField('Update')
+
+
 class Delivery(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     phone = StringField('Phone', validators=[DataRequired()])
@@ -37,3 +44,8 @@ class LoginForm(FlaskForm):
 class BranchesForm(FlaskForm):
     branch = SelectField('Branches', choices=[('Dansoman', 'Dansoman'),('Labone','Labone'),('Afienya','Afienya'),('Dawhenya','Dawhenya'),('Tema','Tema'),('Accra Mall','Accra Mall'),('West Hills Mall','West Hills Mall'),('Achimota Mall','Achimota Mall')])
     location = StringField('Your Location', validators=[DataRequired()])
+
+class FeedbackForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Login')

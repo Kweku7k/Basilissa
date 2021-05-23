@@ -3,35 +3,47 @@
 {% block body %}
 <div class="container">
     <h4>Your Account</h4>
+    <a style="color: black;" href="{{url_for("viewuser")}}">
     <div class="strip-nospace">
         <i class="far fa-user-circle stripIcon"></i>
         <h6 class="stripText">
             {{user.name}}
         </h6>
     </div>
+</a>
+
     
+    <a style="color: black;" href="{{url_for('accountorders')}}">
     <div class="strip-nospace">
         <i class="fas fa-hamburger stripIcon"></i>
         <h6 class="stripText">
             Your Orders
         </h6>
     </div>
+    </a>
 
+    <a style="color: black;" href="{{url_for('feedback')}}">
     <div class="strip-nospace">
         <i class="far fa-paper-plane stripIcon"></i>
         <h6 class="stripText">
             Leave Feedback
         </h6>
     </div>
+    </a>
+
+    <a style="color: black;" href="{{url_for('complaint')}}">
     <div class="strip-nospace">
         <i class="fas fa-exclamation-circle stripIcon"></i>
         <h6 class="stripText">
             Issues a Complaint
         </h6>
     </div>
+    </a>
 </div>
 
 <div class="pinPosition">
-    <button class="button-solid-black" style="margin:auto; background-color: brown; width: 80%;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    <a href="{{url_for('logout')}}">
+        <button class="button-solid-black" style="margin:auto; background-color: brown; width: 80%;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </a>
 </div>
 {% endblock %}

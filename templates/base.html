@@ -61,13 +61,13 @@
     <nav class="navbar navbar-light bg-blue justify-content-between">
       <a class="navbar-brand" href="{{url_for('index')}}"><img width="70" height="70" src="../static/img/logo.jpg"></a>
       <div class="inline">
-        {% if current_user %}
+            {% if current_user.name %}
             <a href="{{url_for('account')}}">
               <button class="button-solid-black my-2 my-sm-0">Account</button>
             </a>
             {% else %}
             <a href="{{url_for('login')}}">
-            <button class="btn btn-outline-success my-2 my-sm-0">Login</button>
+            <button class="button-solid-black my-2 my-sm-0">Login</button>
             </a>
             {% endif %}
       </div>

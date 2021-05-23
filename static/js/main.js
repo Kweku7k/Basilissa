@@ -5,7 +5,16 @@
 // 2.Append color when clicked...
 // Personally, I like 1.
 
-order = []
+
+var total = 0
+
+window.onload = function(){
+    // $("#exampleModal").modal("show");
+    // console.log("sdfghjk");
+  itemTotals()
+  }
+
+
 function addToCart(event){
   button = event.target
   buttonHolder = button.parentElement
@@ -103,18 +112,25 @@ function myFunction() {
 }
 
 
+
 function itemTotals(){
+  itemTotalsArray = []
   all = document.getElementsByClassName("card_price")
+  console.log(all)
+  console.log(all.length)
   length = all.length - 1
+  console.log(length)
   for(i = 0; i<= length; i++ ){
     current = all[i].innerHTML
     amount = current.replace("Ghc ","")
     console.log(amount)
     amount =+ parseInt(amount)
-    itemTotals.push(amount)
+    itemTotalsArray.push(amount)
+    console.log("Your Item Total is: " + itemTotalsArray)
   }
+  findTotal(itemTotalsArray)
+  document.getElementById('itemTotals').innerHTML = total
   // amount = all.replace("Ghc ","")
-  console.log(itemTotals)
 }
 
 
@@ -127,7 +143,7 @@ function increase(event){
     let price = initial_value.parentElement;
     console.log("Your price is ")
     console.log(price)
-    amount = price.getElementsByClassName('card_price')[0].innerHTML
+    amount = price.getElementsByClassName('card_price_hidden')[0].innerHTML
     console.log(amount)
     amount = amount.replace("Ghc ","")
     console.log(amount)
@@ -147,7 +163,10 @@ function increase(event){
 }
 
 function updateItem(initialValue, price ){
+  console.log(initialValue)
+  console.log(price)
   update = price * initialValue
+
   console.log("Updated Value is" + update)
 }
 
@@ -156,7 +175,7 @@ function findTotal(items){
   console.log(items)
   // items = JSON.parse(items)
   console.log(typeof(items))
-  var total = 0 
+  total = 0 
   for (i = 0; i < items.length; i++) {
     console.log(typeof(items[i]))
     total += items[i];
@@ -169,12 +188,26 @@ function decrease(event){
     console.log(initial_value);
     let quantityElement = initial_value.getElementsByClassName('quantity')[0];
     let value = quantityElement.innerHTML;
+    let price = initial_value.parentElement;
+    console.log("Price")
+    console.log( price)
+    amount = price.getElementsByClassName('card_price_hidden')[0].innerHTML
+    amount = amount.replace("Ghc ","")
+
     // increment value
     let newValue = (+value - 1);
     quantityElement.innerText = newValue;
     console.log(newValue);
     let inform = event.target.parentElement.parentElement;
     console.log(inform)
+    console.log(newValue)
+    updateItem(newValue, amount)
+  // Update the individual items
+    amount = update
+    price.getElementsByClassName('card_price')[0].innerHTML = "Ghc " + amount
+  // find the total
+    itemTotals()
+    findTotal(itemTotals)
     
 }
 // 

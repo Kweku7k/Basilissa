@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container">
+    <h4>Your Account</h4>
+    {% for order in orders %}
+    <a href="{{url_for("order", id=order.id)}}">
+    <div class="strip">
+        <h6>Order id {{order.id}}</h6>
+        <h6>{{order.date_created.strftime("%H:%M")}}</h6>
+    </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

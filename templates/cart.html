@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="container">
-        <h4> Your Cart </h4>
+        <h4> Your Cart Total Is <span id="itemTotals">...</span> </h4>
 
         <h6 id="result"></h6>
 
@@ -20,6 +20,7 @@
                 <div>
                 <h4 style="margin-left:0 ;" class="cart_name">{{item.name}}</h4>
                 <h6 class="card_price text-muted" style="margin-top: auto; margin-bottom: auto;">Ghc {{item.price}}</h6>
+                <h6 class="card_price_hidden text-muted" style="display: none;">Ghc {{item.price}}</h6>
                 </div>
                 <div class="controls" style="display: flex; padding: 10px; border-radius: 20px; width: 30vw; justify-content: space-around;">
                     <i style="margin-top: auto; margin-bottom: auto;" class="fas fa-plus" onclick="increase(event)"></i>

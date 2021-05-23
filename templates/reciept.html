@@ -23,12 +23,14 @@
     
 </div>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" style="display: none;" id="exampleModalTrigger" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal
 </button>
-
+{% if current_user.name %}
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+{% else %}
+<div class="modal hide fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <!-- <div class="modal-content"> -->
       <div class="strip-bg" >
@@ -37,7 +39,7 @@
         </h4>
         <br>
         <div>
-          <p>Would you like to create an account for a faster checkout experience?</p>
+          <p>Hi Would you like to create an account for a faster checkout experience?</p>
           <div class="modal-footer">
             <button type="button" class="button-solid-black" data-dismiss="modal">No Please</button>
             <button type="button" class="button-solid-yellow">Lets Do It</button>
@@ -61,9 +63,29 @@
   </div>
 </div>
 
+{% endif %}
 <script>
-  $(document).ready(function() {
-     $("#exampleModal").trigger('click');
-  });
+
+window.onload = function(){
+    $("#exampleModal").modal("show");
+    console.log("sdfghjk");
+  }
+
+//   $(document).ready(function() {
+//     console.log("sdfghjk");
+
+//     window.onload = function(){
+//     $("#exampleModal").modal("show");
+//     console.log("sdfghjk");
+//   }
+// });
+//  $("#exampleModal").trigger('click');
+  // window.onload = function(){
+  //   $("exampleModalTrigger").modal("show");
+  //   console.log("sdfghjk")
+  // //   button = document.getElementById('#exampleModalTrigger')
+  // //   console.log(button)
+  // // document.getElementById('#exampleModalTrigger').click();
+  // }
   </script>
 {% endblock %}
