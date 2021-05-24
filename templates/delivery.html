@@ -91,6 +91,11 @@
 </div> 
 
 <div class="form-group" style="display: none;">
+  {{form.total.label}}
+  {{form.total (class="form-control", id="total")}}
+</div> 
+
+<div class="form-group" style="display: none;">
   {{form.location.label()}}
   {{form.location (class="form-control", id="demo", value="North west of the border")}}
 </div>
@@ -114,6 +119,13 @@
     >
 
   </script> -->
+
+  <script>
+    window.onload = function(){
+      document.getElementById('total').value = sessionStorage.getItem('itemTotals')
+      console.log(document.getElementById('total').value)
+    }
+  </script>
 
 
 {% endblock %}

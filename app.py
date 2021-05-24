@@ -11,6 +11,7 @@ from flask_login import login_user,logout_user,current_user,LoginManager, login_
 import secrets
 import os
 from pathlib import Path
+from flask_migrate import Migrate
 
 
 app = Flask(__name__)
@@ -41,6 +42,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "login"
 login_manager.login_message_category = "info"
+migrate = Migrate(app, db)
 from models import *
 
 
@@ -136,17 +138,24 @@ def summary():
     # print(current_user)
     branch = session['location']
     print(branch)
+    if request.method == 'GET':
+        print("Get")
+
     if request.method == 'POST':
         print('It is a post method')
-        if current_user == None:
-            print("Not Logged in Yet")
-        else:
+        print(current_user)
+        if current_user.is_authenticated:
             form.name.data = current_user.name
             form.phone.data = current_user.phone
             form.branch.data = branch
             form.items = cart
+        else:
+            form.branch.data = branch
+            print("Not Logged in Yet")
+           
+        
     if form.validate_on_submit():
-        order = Order(order = cart, user = form.name.data, phone = form.phone.data, location = form.location.data, branch = form.branch.data )
+        order = Order(order = cart, user = form.name.data, phone = form.phone.data, location = form.location.data, branch = form.branch.data, total=form.total.data )
         db.session.add(order)
         db.session.commit()
         print (order.id)
@@ -159,7 +168,7 @@ def summary():
         # console.log(newrl)
         message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
         sender_id = "Basilissa" #11 Characters maximum
-        send_sms(api_key,phone,message,sender_id)
+        # send_sms(api_key,phone,message,sender_id)
         return redirect(url_for('reciept', id=orderId))
     return render_template('delivery.html', form=form) 
 
@@ -172,11 +181,15 @@ def viewuser():
         form.name.data = current_user.name
         form.email.data = current_user.email
         form.phone.data = current_user.phone
-    if form.validate_on_submit:
-        User(name = form.name.data)
-        db.session.commit()
-        print("EII")
-        # return redirect(url_for("account"))
+    if request.method == 'POST':
+        if form.validate_on_submit:
+            user.name = form.name.data
+            user.email = form.email.data
+            user.phone = form.phone.data
+            User(name = form.name.data,email = form.email.data, phone = form.phone.data,  )
+            db.session.commit()
+            print("EII")
+            return redirect(url_for("account"))
     return render_template('viewuser.html', user=user, form=form)
 
 
@@ -208,6 +221,7 @@ def delivery():
 def accountorders():
     print(current_user)
     orders = Order.query.filter_by(user = current_user.name).all()
+    print(orders)
     return render_template('accountorders.html', orders=orders)
 
 @app.route('/maps', methods=['GET','POST'])
@@ -412,7 +426,7 @@ def login():
 def reciept(id):
     print(id)
     order = Order.query.filter_by(id=id).first()
-    return render_template('reciept.html', id=id)
+    return render_template('reciept.html', order = order)
 
 @app.route('/items')
 def items():

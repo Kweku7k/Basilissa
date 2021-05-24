@@ -35,6 +35,7 @@ class Order(db.Model):
     location = db.Column(db.String(), nullable=False)
     branch = db.Column(db.String(), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    total = db.Column(db.String)
 
     def __repr__(self):
         return f"Item('{self.id}', '{self.date_created}')"

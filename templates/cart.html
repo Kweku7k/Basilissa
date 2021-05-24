@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="container">
-        <h4> Your Cart Total Is <span id="itemTotals">...</span> </h4>
+        <h4> Your Cart Total Is Ghc<span id="itemTotals">...</span> </h4>
 
         <h6 id="result"></h6>
 
@@ -47,14 +47,18 @@
 
 </div>
 
-<!-- <script>
+<script>
+    function send(){
 
     if (typeof(Storage) !== "undefined") {
-      document.getElementById("result").innerHTML = localStorage.getItem("cart");
+      itemTotal = document.getElementById("itemTotals").innerHTML 
+      sessionStorage.setItem("itemTotals", itemTotal);
     } else {
       document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
     }
-    </script> -->
+}
+
+    </script>
 
 
 {% endblock %}

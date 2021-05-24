@@ -26,6 +26,7 @@ class Delivery(FlaskForm):
     cart = StringField('Cart', validators=[DataRequired()])
     notes = StringField('Notes', widget=TextArea())
     branch = StringField('Branch', validators=[DataRequired()])
+    total = StringField('Total')
     submit = SubmitField('Place Order')
 
 class ItemForm(FlaskForm):

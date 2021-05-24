@@ -2,10 +2,10 @@
 
 {% block body %}
 <div class="container">
-    <h4 onload="myFunction()">Order Id: {{id}}</h4>
+    <h4 onload="myFunction()">Order Id: {{order.id}}</h4>
     <div style="text-align: center;">
         <h6>Your Total</h6>
-        <h1 style="font-weight: 900; font-size: 80px;">Ghc 300</h1>
+        <h1 style="font-weight: 900; font-size: 80px;">Ghc {{order.total}}</h1>
         <h6>You will recieve a confirmation call from Basilissa, thank you</h6>
         
             <div style="margin-bottom: 20px;">
@@ -28,7 +28,7 @@
 </button>
 {% if current_user.name %}
 <!-- Modal -->
-
+  
 {% else %}
 <div class="modal hide fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

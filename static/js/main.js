@@ -99,6 +99,10 @@ function handle_data(){
     forder = JSON.stringify(finalorder)
     document.getElementById('cart').value = forder
     console.log(document.getElementById('cart').value)
+    // total from document
+    itemTotal = document.getElementById("itemTotals").innerHTML 
+    sessionStorage.setItem("itemTotals", itemTotal);
+
   }
 }
 

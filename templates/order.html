@@ -4,10 +4,33 @@
 <div class="container">
     <h1> Order Id: #{{order.id}} </h1>
     <hr>
-    Your order has been placed
-    Date/Time: 
-    Sales Type: 
-    Order Description:
-    Total:
+    <h6>{{order.user}}</h6>
+    <h6>Ordered at {{order.date_created.strftime("%H:%M")}}</h6>
+    <h6>Order</h6>
+    <h6 style="display: none;" id="array">{{order.order}}</h6>
+
+    <div id="ordersss"></div>
+
 </div>
+
+<script>
+    orders = document.getElementsByClassName("ordersss")
+    console.log(orders)
+    var array = JSON.parse(document.getElementById("array").innerHTML)
+    console.log(array)
+    length = array.length - 1;
+    for (var i = 0; i <= length; i++){
+        var newdiv = document.createElement('div')
+        console.log(array[i])
+        console.log(array[i].itemname)
+        console.log(array[i].itemid)
+        console.log(array[i].itemquantity)
+        order = `<div class="strip">
+                    <h6>${array[i].itemname}</h6>
+                    <h6>${array[i].itemquantity}</h6>
+                </div>`
+        newdiv.append(order)
+        orders.innerHTML = newdiv
+    }
+</script>
 {% endblock %}

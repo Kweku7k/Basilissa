@@ -4,10 +4,16 @@
 <div class="container">
     <h4>Your Account</h4>
     {% for order in orders %}
-    <a href="{{url_for("order", id=order.id)}}">
+    <a style="color: black;" href="{{url_for("order", id=order.id)}}">
     <div class="strip">
-        <h6>Order id {{order.id}}</h6>
-        <h6>{{order.date_created.strftime("%H:%M")}}</h6>
+        <div>
+            <h5>Order id {{order.id}}</h5>
+            <h6>{{order.branch}}</h6>
+        </div>
+        <div style="text-align: right;">
+            <h6>{{order.date_created.strftime("%H:%M")}}</h6>
+            <h6>{{order.date_created.strftime("%Y-%m-%d")}}</h6>
+        </div>
     </div>
     </a>
     {% endfor %}
