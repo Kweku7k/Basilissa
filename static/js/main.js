@@ -161,6 +161,9 @@ function itemTotals(){
   }
   findTotal(itemTotalsArray)
   document.getElementById('itemTotals').innerHTML = total
+  document.getElementsByClassName("overlay")[0].style.display = "none"
+
+
   // amount = all.replace("Ghc ","")
 }
 

@@ -44,7 +44,9 @@
         </form>
     </div>
 
-
+    <div class="overlay">
+        <img src="../static/loader.gif" alt="">
+      </div>
 </div>
 
 <script>
@@ -55,8 +57,11 @@
       sessionStorage.setItem("itemTotals", itemTotal);
     } else {
       document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+
     }
 }
+
+
 
     </script>
 

@@ -38,6 +38,10 @@
 // locate you.
 let map, infoWindow;
 
+window.onload = function(){
+    console.log("sdfghjk");
+  }
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 5.6535279721067235, lng:-0.09563454529332772 },
@@ -154,6 +158,11 @@ function initMap() {
           console.log(JSON.stringify(formatted_address))
           document.getElementById('location').value = formatted_address
           sessionStorage.setItem("formatted_address", Date.now());
+
+          // Done with this.
+          // console.log(
+            document.getElementsByClassName("overlay")[0].style.display = "none"
+            // )
       }
       fetchData()
         },
@@ -179,8 +188,15 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 };
 
+function sendToStorage(){
+  console.log("Update Session Storage")
+  formatted_address = document.getElementById('location').value
+  console.log(formatted_address)
+  sessionStorage.setItem("formattedAddress", formatted_address)
+}
 
 
+  
     </script>
   </head>
   <body>
@@ -188,47 +204,13 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     <!--The div element for the map -->
     <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
       <a class="navbar-brand" href="{{url_for('index')}}"><img width="70" height="70" src="../static/img/logo.jpg"></a>
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" style="margin-right: auto; margin-left: auto;">
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url_for("index")}}"><h6 class="nav-item-active">Home</h6><span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Meal Of The Day</h6></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">About Us</h6></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{url_for('branches')}}"><h6 class="nav-item">Branches</h6></a>
-          </li>
-        </ul>
-          {% if current_user %}
-          <a href="{{url_for('account')}}">
-            <button class="button-regular-black my-2 my-sm-0 mr-3">Order Now</button>
-          </a>
-          <a href="{{url_for('account')}}">
-            <button class="button-solid-black my-2 my-sm-0">Order Now</button>
-          </a>
-          {% else %}
-          <a href="{{url_for('login')}}">
-          <button class="btn btn-outline-success my-2 my-sm-0">Login</button>
-          </a>
-          {% endif %}
-      </div> -->
     </nav>
 
 
-<section style="padding: 0;">
+<section  style="padding: 0;">
   <div class="container">
-
     <div class="row">
       <br>
-      
       <div class="col-md-6">
           <h4>Find A Branch Near Me</h4>
           <!-- <button id="buttons">Locate Me</button> -->
@@ -236,18 +218,14 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           </div>
           <!-- <h4>Hello</h4> -->
         </div>
-
-
         <div class="col-md-6">
-          
           <!-- s -->
           <br>
-          <form action="" method="POST">
+          <form action="" method="POST" onSubmit="sendToStorage()" >
            {{form.hidden_tag()}}
            <div class="card-outline strip">
             {{form.branch (class="form-control invinsible")}}
         </div>
-
         <div class="formLine">
           <!-- <i class="fa fa-chevron-right" aria-hidden="true"></i> -->
           {{form.location (class="form-control invinsible", placeholder="Please enter a location" )}}
@@ -255,11 +233,8 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       <div style="text-align:center; margin-top: 5vh; ">
         <button class="button-solid-black" style="width: 80%;">Proceed</button>
       </div>
-
           </form>
-
           <!-- End -->
-
           </div>
         </div>
       </div>
@@ -268,14 +243,26 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 
     
-    <!-- <div class="overlay"> -->
-      
+    <div class="overlay">
+      <img src="../static/loader.gif" alt="">
     </div>
+    <!-- <div class="loader"></div> -->
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEQbDoqr9mxC1QEEcWLsyjKg428R0YgeE&callback=initMap&libraries=&v=weekly"
       async
-    ></script>
+    >
+    // window.onload(){
+    //   console.log("loaded")
+    //   tab = document.getElementsByClassName("overlay")[0].style.display 
+      
+    //   console.log(tab)
+
+    // }
+
+    
+
+  </script>
   </body>
 </html>
 <!-- https://www.google.com/maps/search/?api=1&query=58.698017,-152.522067 -->

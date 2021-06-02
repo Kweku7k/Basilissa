@@ -6,19 +6,24 @@
     <hr>
     <h6>{{order.user}}</h6>
     <h6>Ordered at {{order.date_created.strftime("%H:%M")}}</h6>
-    <h6>Order</h6>
+    <h6>Total of <span style="font-weight: 500;">Ghc{{order.total}}</span></h6>
     <h6 style="display: none;" id="array">{{order.order}}</h6>
 
-    <div id="ordersss"></div>
+    <section style="padding: 5px;" id="ordersss"></section>
 
 </div>
 
 <script>
-    orders = document.getElementsByClassName("ordersss")
+    orders = document.getElementById("ordersss")
     console.log(orders)
     var array = JSON.parse(document.getElementById("array").innerHTML)
-    console.log(array)
+    console.log("The array:" + array)
     length = array.length - 1;
+
+    // var node = document.createElement("div")
+    // var text = newdiv.appendChild(`<h4>YesPleasee</h4>`)
+    
+    
     for (var i = 0; i <= length; i++){
         var newdiv = document.createElement('div')
         console.log(array[i])
@@ -29,8 +34,10 @@
                     <h6>${array[i].itemname}</h6>
                     <h6>${array[i].itemquantity}</h6>
                 </div>`
-        newdiv.append(order)
-        orders.innerHTML = newdiv
+                console.log(order)
+        newdiv.innerHTML = order
+        orders.append(newdiv)
+        console.log(orders)
     }
 </script>
 {% endblock %}

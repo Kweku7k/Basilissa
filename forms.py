@@ -38,7 +38,7 @@ class ItemForm(FlaskForm):
     submit = SubmitField('Submit')
     
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
 

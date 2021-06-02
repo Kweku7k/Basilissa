@@ -110,7 +110,7 @@ def error_404(error):
     print(request.url)
     print(params)
     url = "https://api.telegram.org/bot1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0/sendMessage?chat_id=-573994352&text=" + urllib.parse.quote(params)
-    content = urllib.request.urlopen(url).read()
+    # content = urllib.request.urlopen(url).read()
     print(today)
     print(time)
     # print(content)
@@ -221,8 +221,7 @@ def delivery():
         phone = "0249411910" #SMS recepient"s phone number
         message = "You have recieved a new order. please check your dashboard to confirm."
         sender_id = "Basilissa" #11 Characters maximum
-        # send_sms(api_key,phone,message,sender_id)
-
+        send_sms(api_key,phone,message,sender_id)
     return render_template('delivery.html', form=form)
 
 @app.route('/account/orders')
@@ -430,10 +429,10 @@ def handle_data():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email = form.email.data).first()
+        user = User.query.filter_by(phone = form.phone.data).first()
         if user:
             login_user(user, remember=True)
-            flash (f'Login for ' + user.name ,'success')
+            flash (f' ' + user.name + ',You have been logged in successfully ' ,'success')
             return redirect(url_for('index'))
             # next = request.args.get('next')
         else:
