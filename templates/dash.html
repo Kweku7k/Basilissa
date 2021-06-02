@@ -76,13 +76,23 @@
                   <div class="dash-item">Riders</div>
                   </a>
                   {% endif %}
+                  
 
               </div>
   
-              <div>
+              <!-- <div>
                   <h6>SETTINGS</h6>
                   <div class="dash-item">Feedback</div>
-              </div>
+              </div> -->
+              <!-- <h6>SETTINGS</h6> -->
+
+              {% if title == 'Feedback' %}
+                  <div class="dash-item-active">Feedback</div>
+                  {% else %}
+                  <a style="text-decoration: none;" href="{{url_for('dashfeedback')}}">
+                  <div class="dash-item">Feedback</div>
+                  </a>
+                  {% endif %}
   
               <div class="flex" style="display: flex; margin-bottom: 5vh; position: absolute; bottom: 2vh;">
                   <div class="elip" style="background-color: #FEBE19; margin-right: 1vw;"></div>

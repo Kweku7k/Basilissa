@@ -15,6 +15,24 @@ window.onload = function(){
   }
 
 
+  function onReady(callback) {
+    var intervalId = window.setInterval(function() {
+      if (document.getElementsByTagName('body')[0] !== undefined) {
+        window.clearInterval(intervalId);
+        callback.call(this);
+      }
+    }, 1000);
+  }
+  
+  function setVisible(selector, visible) {
+    document.querySelector(selector).style.display = visible ? 'block' : 'none';
+  }
+  
+  onReady(function() {
+    setVisible('.page', true);
+    setVisible('#loading', false);
+  });
+
 function addToCart(event){
   button = event.target
   buttonHolder = button.parentElement
@@ -104,6 +122,15 @@ function handle_data(){
     sessionStorage.setItem("itemTotals", itemTotal);
 
   }
+}
+
+function fetchfile(){
+  // This contains the formatted address as a JSON, pick this and then you are goldddddddddddddd
+  file = "https://maps.google.com/maps/api/geocode/json?latlng=5.5588567, -0.2593221&key=AIzaSyDkgDF0X-kweO5xG2AiiGmkqd-7XyeNjLE"
+  fetch (file)
+  .then(x => x.text())
+  .then(y = y.formatted_address);
+
 }
 
 function ShowSummary(){

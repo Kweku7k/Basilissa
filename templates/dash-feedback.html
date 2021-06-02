@@ -1,0 +1,37 @@
+{% extends "dash.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between;">
+        <h4>Feedback</h4>
+        <!-- <button class="dash-item-active" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        <!-- <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        
+    </div>
+    <br>
+    <!-- In -->
+    {% for feedback in allfeedback %}
+    <div class="row">
+            
+        <!-- <div class="col-md-4"> -->
+            <div data-aos="fade-up" class="card" style="width: 100%;">
+                <div>
+                    <!-- <div class="elip" style="margin-bottom: 1vh;"></div> -->
+                    <div>
+                        <h6>{{feedback.phone}}</h6>
+                        <h6 class="text-muted" style="font-weight: 300;">{{feedback.description}}</h6>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+        <!-- Out -->
+    </div>
+        {% endfor %}
+
+
+        
+</div>
+
+
+{% endblock %}

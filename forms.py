@@ -47,6 +47,7 @@ class BranchesForm(FlaskForm):
     location = StringField('Your Location', validators=[DataRequired()])
 
 class FeedbackForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
+    feedback = StringField('Feedback', widget=TextArea(), validators=[DataRequired()])
     submit = SubmitField('Login')

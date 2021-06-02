@@ -46,3 +46,9 @@ class Branches(db.Model):
 
     def __repr__(self):
         return f"Branch('{self.name}')"
+
+class Feedback(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String())
+    phone = db.Column(db.String())
+    description = db.Column(db.String())

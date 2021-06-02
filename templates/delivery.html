@@ -65,19 +65,19 @@
 {% block body %}
 <div class="container">
     <div class="myFrame"></div>
-<form action="" method="POST">
+<form action="" method="POST" >
 {{form.hidden_tag()}}
     
 <h4>Please confirm your information</h4>
 
 <div class="form-group">
     {{form.name.label}}
-    {{form.name (class="form-control")}}
+    {{form.name (class="form-control", id="name")}}
 </div>
   
 <div class="form-group">
     {{form.phone.label}}
-    {{form.phone (class="form-control")}}
+    {{form.phone (class="form-control", id="phone")}}
 </div>
 
 <div class="form-group" style="display: none;">
@@ -106,7 +106,7 @@
 </div>
 
 <div style="text-align: center;">
-    {{form.submit(class="button-solid-black")}}
+    {{form.submit(class="button-solid-black", onClick="storeInformation()")}}
 </div>
     </form>
 <!-- <div id="map" style="width: 80vw; height: 30vh; text-align: center;  margin: auto;"></div>
@@ -125,8 +125,16 @@
       document.getElementById('total').value = sessionStorage.getItem('itemTotals')
       console.log(document.getElementById('total').value)
     }
+    function storeInformation(){
+      console.log("submitted")
+      name = document.getElementById('name').value
+      console.log(name)
+      sessionStorage.setItem("username", name);
+      phone = document.getElementById('phone').value
+      console.log(phone)
+      sessionStorage.setItem("userphone", phone);
+    }
   </script>
-
 
 {% endblock %}
 

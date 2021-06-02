@@ -23,6 +23,11 @@
         color: black;
         text-decoration: none;
       }
+      .ellipse{
+        width: 10px;
+        height: 10px;
+        background-color: black;
+      }
     </style>
     <link rel="stylesheet" href="../static/css/style.css">
 
@@ -60,6 +65,7 @@ function initMap() {
           position: hroad,
           map: map,
           zoom: 4,
+          url: 'http://www.google.com/',
         });
 
         
@@ -79,12 +85,15 @@ function initMap() {
           position: dansoman,
           map: map,
           zoom: 4,
+          url: "/menu/Dansoman",
         });
 
         const accramallmarker = new google.maps.Marker({
           position: accramall,
           map: map,
           zoom: 4,
+          url: "/menu/Dansoman",
+
         });
         const westhillsmarker = new google.maps.Marker({
           position: westhills,
@@ -95,15 +104,33 @@ function initMap() {
           position: achimota,
           map: map,
           zoom: 4,
+          url: "/menu/Achimota",
+
         });
+
+//         console.log(accramallmarker)
+// accramallmarker.addListener(
+//   'click', function() {
+//     console.log('caught')
+//       window.location.href = this.url;
+//   })
+
+
+
+  google.maps.event.addListener(marker, 'click', function() {
+      window.location.href = marker.url;
+    })
+
 
   infoWindow = new google.maps.InfoWindow();
   // const locationButton = document.createElement("button");
   const locationButton = document.getElementById("buttons");
-  locationButton.textContent = "Locate me";
-  locationButton.classList.add("custom-map-control-button");
+  // locationButton.innerHTML = `<div class="ellipse"></div>`;
+  // locationButton.classList.add("custom-map-control-button");
   // map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
+  // onload()
+  // locationButton.addEventListener("click", () => {
+  // function findme(){
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -112,10 +139,23 @@ function initMap() {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
+          console.log("Latitude: " + position.coords.latitude)
+          console.log("Longitude: " + position.coords.longitude)
           infoWindow.setPosition(pos);
-          infoWindow.setContent("You are here.");
+          infoWindow.setContent("Me");
+          // infoWindow.setContent("You are here.");
           infoWindow.open(map);
           map.setCenter(pos);
+          async function fetchData(){
+          const res = await fetch(`https://maps.google.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.latitude}&key=AIzaSyDkgDF0X-kweO5xG2AiiGmkqd-7XyeNjLE`);
+          console.log(res)
+          const data = await res.json();
+          formatted_address = data.results[0].formatted_address
+          console.log(JSON.stringify(formatted_address))
+          document.getElementById('location').value = formatted_address
+          sessionStorage.setItem("formatted_address", Date.now());
+      }
+      fetchData()
         },
         () => {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -125,7 +165,8 @@ function initMap() {
       // Browser doesn't support Geolocation
       handleLocationError(false, infoWindow, map.getCenter());
     }
-  });
+
+  // };
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -136,7 +177,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       : "Error: Your browser doesn't support geolocation."
   );
   infoWindow.open(map);
-}
+};
+
+
+
     </script>
   </head>
   <body>
@@ -187,6 +231,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       
       <div class="col-md-6">
           <h4>Find A Branch Near Me</h4>
+          <!-- <button id="buttons">Locate Me</button> -->
           <div id="map">
           </div>
           <!-- <h4>Hello</h4> -->

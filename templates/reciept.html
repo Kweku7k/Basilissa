@@ -30,9 +30,31 @@
 <!-- Modal -->
   
 {% else %}
-<div class="modal hide fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <!-- <div class="modal-content"> -->
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <h4>
+          Just a sec...
+        </h4>
+        <br>
+        <div>
+          <p>Hi Would you like to create an account for a faster checkout experience?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button-solid-black" data-dismiss="modal">Close</button>
+        <a href="{{url_for('signup')}}">
+          <button type="button" class="button-solid-yellow">Sign Me Up!</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="modal hide fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div role="document">
       <div class="strip-bg" >
         <h4>
           Just a sec...
@@ -41,36 +63,30 @@
         <div>
           <p>Hi Would you like to create an account for a faster checkout experience?</p>
           <div class="modal-footer">
-            <button type="button" class="button-solid-black" data-dismiss="modal">No Please</button>
-            <button type="button" class="button-solid-yellow">Lets Do It</button>
+            <button type="button" class="button-solid-black" data-dismiss="modal" onclick="close()">No Please</button>
+            <a href="{{url_for('signup')}}">
+              <button class="button-solid-yellow" onclick="fire()">Lets Do It</button>
+            </a>
           </div> 
         </div>
       </div>
-      <!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> -->
-    <!-- </div> -->
+  
   </div>
-</div>
+</div> -->
 
 {% endif %}
 <script>
 
 window.onload = function(){
-    $("#exampleModal").modal("show");
+    $("#exampleModalCenter").modal("show");
     console.log("sdfghjk");
   }
 
+
+  function close(){
+    $("#exampleModal").modal("close");
+
+  }
 //   $(document).ready(function() {
 //     console.log("sdfghjk");
 

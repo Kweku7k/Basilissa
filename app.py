@@ -4,7 +4,7 @@ import datetime
 import urllib.request, urllib.parse
 import urllib
 from flask import Flask, render_template, redirect, url_for, flash, request, session
-from forms import BranchesForm, Registration, Delivery, ItemForm, LoginForm, UserForm
+from forms import BranchesForm, FeedbackForm, Registration, Delivery, ItemForm, LoginForm, UserForm
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user,logout_user,current_user,LoginManager, login_required
 # from flask_session import Session
@@ -59,7 +59,6 @@ def save_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
     form_picture.save(picture_path)
     print ("The picture name is" + picture_fn)
-
     return picture_fn
 
 
@@ -94,6 +93,7 @@ def index():
 @app.route('/logout')
 def logout():
     logout_user()
+    flash(f'You have been logged out.','danger')
     return redirect(url_for("index"))
 
 # params = {"key":api_key,"to":phone,"msg":message,"sender_id":sender_id}
@@ -110,14 +110,14 @@ def error_404(error):
     print(request.url)
     print(params)
     url = "https://api.telegram.org/bot1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0/sendMessage?chat_id=-573994352&text=" + urllib.parse.quote(params)
-    # content = urllib.request.urlopen(url).read()
+    content = urllib.request.urlopen(url).read()
     print(today)
     print(time)
     # print(content)
     # print(url)
     # token = "1699472650:AAEso9qTbz1ODvKZMgRru5FhCEux_91bgK0"
     # chat_id = "-573994352"
-    return render_template('error.html'),404
+    return render_template('404.html', error=error),404
 
 @app.route('/menu/<string:location>')
 def menu(location):
@@ -168,7 +168,7 @@ def summary():
         # console.log(newrl)
         message = "You have recieved a new order from " + form.name.data + ". Order id " + orderid + " at " +  form.location.data + ". Check your dashboard for more information &"
         sender_id = "Basilissa" #11 Characters maximum
-        # send_sms(api_key,phone,message,sender_id)
+        send_sms(phone,message)
         return redirect(url_for('reciept', id=orderId))
     return render_template('delivery.html', form=form) 
 
@@ -193,13 +193,21 @@ def viewuser():
     return render_template('viewuser.html', user=user, form=form)
 
 
-@app.route('/feedback')
+@app.route('/feedback', methods=['POST','GET'])
 def feedback():
-   pass
+    form = FeedbackForm()
+    if request.method == 'GET':
+        print('Its a get request now.')
+    if form.validate_on_submit():
+        feedback = Feedback(name = form.name.data, phone = form.phone.data, description = form.feedback.data )
+        send_sms("0545977791","New Feedback")
+        db.session.add(feedback)
+        db.session.commit()
+        print('done')
+        flash(f'Thank you for your feedback','success')
+    return render_template('feedback.html', form=form)
 
-@app.route('/complaint')
-def complaint():
-   pass
+
 
 @app.route('/hoh', methods=['POST','GET'])
 def delivery():
@@ -245,9 +253,12 @@ def account():
 def dashboard():
     inventory = Item.query.all()
     inventoryTotal = len(inventory)
+    users = User.query.all()
+    totalUsers = len(users)
+    print(totalUsers)
     # riders = Riders.query.all()
     # ridersTotal = len(riders)
-    return render_template('dash-dashboard.html', inventory = inventoryTotal, title='Dashboard')
+    return render_template('dash-dashboard.html', inventory = inventoryTotal, title='Dashboard', users=totalUsers)
 
 @app.route('/dash-orders')
 def dashorders():
@@ -269,6 +280,12 @@ def viewdashinventory(category):
 def dashriders():
     return render_template('dash-riders.html', title='Riders')
 
+@app.route('/dash-feedback')
+def dashfeedback():
+    allfeedback = Feedback.query.all()
+    return render_template('dash-feedback.html', title='Feedback',allfeedback=allfeedback)
+
+
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     form = Registration()
@@ -277,7 +294,7 @@ def signup():
         user = User(name = form.name.data, email = form.email.data, phone = form.phone.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        login_user(user)
+        login_user(user, remember=True)
         print(current_user)
         flash(f'' + user.name +', your account has been created ', 'success')
         return redirect(url_for('index'))
@@ -367,7 +384,9 @@ def cart():
 def dash():
     return render_template('dashboard2.html')
 
-def send_sms(api_key,phone,message,sender_id):
+def send_sms(phone,message):
+    api_key = "aniXLCfDJ2S0F1joBHuM0FcmH"
+    sender_id = "Basilissa"
     params = {"key":api_key,"to":phone,"msg":message,"sender_id":sender_id}
     url = 'https://apps.mnotify.net/smsapi?'+ urllib.parse.urlencode(params)
     content = urllib.request.urlopen(url).read()
@@ -413,7 +432,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
         if user:
-            login_user(user)
+            login_user(user, remember=True)
             flash (f'Login for ' + user.name ,'success')
             return redirect(url_for('index'))
             # next = request.args.get('next')
