@@ -225,7 +225,7 @@ function sendToStorage(){
            {{form.hidden_tag()}}
            <div class="card-outline strip">
              <div class="select-container">
-               {{form.branch (class="form-control invinsible")}}
+               {{form.branch (class="form-control invinsible", style="-webkit-appearance: none;")}}
               </div>
         </div>
         <div class="formLine">
@@ -245,7 +245,7 @@ function sendToStorage(){
 
 
     
-    <div class="overlay">
+    <div class="overlay" style="height: 100%;">
       <img src="../static/loader.gif" alt="">
     </div>
     <!-- <div class="loader"></div> -->
