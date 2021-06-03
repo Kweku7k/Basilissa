@@ -2,7 +2,17 @@
 
 {% block body %}
 <div class="container">
-    <h1> Order Id: #{{order.id}} </h1>
+    <div style="display: flex; justify-content: space-between;">
+        <h1>#{{order.id}} </h1>
+        {% if order.delivered == False %}
+        <a href="{{url_for('deleteOrder', id=order.id)}}">
+            <button class="button-solid-black" style="background-color: brown;">Cancel Order</button>
+        </a>
+        {% else %}
+        
+        <!-- <button class="button-solid-yellow" style="background-color: green;"><i class="fa fa-check" aria-hidden="true"></i> Delivered</button> -->
+        {% endif %}
+    </div>
     <hr>
     <h6>{{order.user}}</h6>
     <h6>Ordered at {{order.date_created.strftime("%H:%M")}}</h6>
@@ -31,8 +41,13 @@
         console.log(array[i].itemid)
         console.log(array[i].itemquantity)
         order = `<div class="strip">
+            <div>
                     <h6>${array[i].itemname}</h6>
-                    <h6>${array[i].itemquantity}</h6>
+                    </div>
+                    <div>
+                        
+                        <h6>${array[i].itemquantity}</h6>
+            </div>
                 </div>`
                 console.log(order)
         newdiv.innerHTML = order

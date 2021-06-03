@@ -253,16 +253,39 @@ def dashboard():
     inventory = Item.query.all()
     inventoryTotal = len(inventory)
     users = User.query.all()
+    orders = Order.query.all()
     totalUsers = len(users)
+    totalOrders = len(orders)
     print(totalUsers)
-    # riders = Riders.query.all()
+    # Havent Created This Yet
+    # riders = Rider.query.all()
     # ridersTotal = len(riders)
-    return render_template('dash-dashboard.html', inventory = inventoryTotal, title='Dashboard', users=totalUsers)
+    return render_template('dash-dashboard.html', inventory = inventoryTotal, title='Dashboard', users=totalUsers, orders=totalOrders)
 
 @app.route('/dash-orders')
 def dashorders():
     orders = Order.query.all()
     return render_template('dash-orders.html', title='Orders', orders = orders)
+
+@app.route('/updateState/<int:id>')
+def updateState(id):
+    order = Order.query.get_or_404(id)
+    print(order)
+    return redirect(url_for('order',id=id))
+
+@app.route('/dash-order/<int:id>')
+def dashorder(id):
+    order = Order.query.filter_by(id = id).first()
+    print(order)
+    return render_template('dash-order.html', title='Orders', order = order)
+
+@app.route("/deleteOrder/<int:id>")
+def deleteOrder(id):
+    order = Order.query.get_or_404(id)
+    db.session.delete(order)
+    db.session.commit()
+    flash(f'Your Order has been cancelled', 'success')
+    return redirect(url_for('accountorders'))
 
 @app.route('/dash-inventory')
 def dashinventory():

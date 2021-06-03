@@ -15,14 +15,18 @@
     
     <div class="col-md-4">
         <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <a href="{{url_for('dashorder',id=order.id)}}" style="text-decoration: none;">
             <h6>Order #{{order.id}}</h6>
+            </a>
             <h6 class="text-muted" >{{order.user}}</h6>
             <h6 class="text-muted" style="font-weight:300">{{order.date_created.strftime("%m/%d/%Y, %H:%M:%S")}}</h6>
             <div>
             
             <div class="status">
                 <div>
-                    <h6 style="font-weight: 300;">{{order.phone}}</a></h6>
+                    <a href="tel:{{order.phone}}">
+                        <h6 style="font-weight: 300;">{{order.phone}}</a></h6>
+                    </a>
                     <h6>Ghc {{order.total}}</h6>
                 </div>
                 <div>

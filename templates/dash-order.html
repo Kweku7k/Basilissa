@@ -1,0 +1,74 @@
+{% extends "dash.html" %}
+
+{% block body %}
+<!-- <div class="container"> -->
+    <h6 style="display: none;" id="array">{{order.order}}</h6>
+
+    <div style="display: flex; justify-content: space-between;">
+        <h4 style="margin-top: auto; margin-bottom: auto;">Pending Orders</h4>
+        <!-- <button class="dash-item-active" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-eye" style="padding-right: 10px;"></i> View All Orders</button>
+        
+    </div>
+<br>
+<div class="row">
+    <!-- In -->
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="card">
+            <h6>Order #{{order.id}}</h6>
+            <h6 class="text-muted" >{{order.user}}</h6>
+            <h6 class="text-muted" style="font-weight:300">{{order.date_created.strftime("%m/%d/%Y, %H:%M:%S")}}</h6>
+            <div>
+            
+            <div class="status">
+                <div>
+                    <h6 style="font-weight: 300;">{{order.phone}}</a></h6>
+                    <h6>Ghc {{order.total}}</h6>
+                </div>
+                <div>
+                    <i class="fas fa-check-circle fa-2x" style="color: green;"></i>
+                    <i class="fas fa-times-circle fa-2x" style="color: red;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<h4 style="margin-top: auto; margin-bottom: auto;">Order Details</h4>
+
+<section style="padding: 5px;" id="ordersss"></section>
+
+
+
+<script>
+    orders = document.getElementById("ordersss")
+    console.log(orders)
+    var array = JSON.parse(document.getElementById("array").innerHTML)
+    console.log("The array:" + array)
+    length = array.length - 1;
+
+    // var node = document.createElement("div")
+    // var text = newdiv.appendChild(`<h4>YesPleasee</h4>`)
+    
+    
+    for (var i = 0; i <= length; i++){
+        var newdiv = document.createElement('div')
+        console.log(array[i])
+        console.log(array[i].itemname)
+        console.log(array[i].itemid)
+        console.log(array[i].itemquantity)
+        order = `<div class="strip" style="box-shadow:none">
+                    <h6>${array[i].itemname}</h6>
+                    <h6>${array[i].itemquantity}</h6>
+                </div>`
+                console.log(order)
+        newdiv.innerHTML = order
+        orders.append(newdiv)
+        console.log(orders)
+    }
+</script>
+<!-- </div> -->
+{% endblock %}

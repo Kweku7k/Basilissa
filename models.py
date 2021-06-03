@@ -1,3 +1,5 @@
+from sqlalchemy.orm import defaultload
+from wtforms.fields.core import BooleanField
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
@@ -36,6 +38,7 @@ class Order(db.Model):
     branch = db.Column(db.String(), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     total = db.Column(db.String)
+    delivered = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return f"Item('{self.id}', '{self.date_created}')"
