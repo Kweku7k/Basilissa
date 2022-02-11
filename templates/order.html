@@ -5,9 +5,9 @@
     <div style="display: flex; justify-content: space-between;">
         <h1>#{{order.id}} </h1>
         {% if order.delivered == False %}
-        <a href="{{url_for('deleteOrder', id=order.id)}}">
-            <button class="button-solid-black" style="background-color: brown;">Cancel Order</button>
-        </a>
+        <!-- <a href="{{url_for('deleteOrder', id=order.id)}}"> -->
+            <button class="button-solid-black" style="background-color: brown;" data-toggle="modal" data-target="#exampleModal">Cancel Order</button>
+        <!-- </a> -->
         {% else %}
         
         <!-- <button class="button-solid-yellow" style="background-color: green;"><i class="fa fa-check" aria-hidden="true"></i> Delivered</button> -->
@@ -22,6 +22,32 @@
     <section style="padding: 5px;" id="ordersss"></section>
 
 </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cancel Order</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to cancel this order
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary">Cancel Order</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
     orders = document.getElementById("ordersss")

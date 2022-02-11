@@ -284,6 +284,9 @@ def deleteOrder(id):
     order = Order.query.get_or_404(id)
     db.session.delete(order)
     db.session.commit()
+    message = "Your order" + str(order.id) +  " has been cancelled"
+    phone = '0545977791'
+    send_sms(phone, message)
     flash(f'Your Order has been cancelled', 'success')
     return redirect(url_for('accountorders'))
 
@@ -306,7 +309,6 @@ def dashriders():
 def dashfeedback():
     allfeedback = Feedback.query.all()
     return render_template('dash-feedback.html', title='Feedback',allfeedback=allfeedback)
-
 
 @app.route('/signup', methods=['POST','GET'])
 def signup():
