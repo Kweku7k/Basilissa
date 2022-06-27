@@ -1,0 +1,62 @@
+{% extends "dash.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div style="display: flex; justify-content: space-between;">
+        <h4>Feedback</h4>
+        <!-- <button class="dash-item-active" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        <!-- <button class="button-solid-yellow" style="border: none;"> <i class="fas fa-plus" style="padding-right: 10px;"></i> Add a rider</button> -->
+        
+    </div>
+    <br>
+    <!-- In -->
+    {% for feedback in allfeedback %}
+    <div class="row">
+            
+        <!-- <div class="col-md-4"> -->
+            <div data-aos="fade-up" class="card" style="width: 100%;">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Url</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        <!-- </div> -->
+        <!-- Out -->
+    </div>
+        {% endfor %}
+
+
+        
+</div>
+
+
+{% endblock %}

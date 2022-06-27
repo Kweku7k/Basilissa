@@ -310,6 +310,12 @@ def dashfeedback():
     allfeedback = Feedback.query.all()
     return render_template('dash-feedback.html', title='Feedback',allfeedback=allfeedback)
 
+@app.route('/dash-accounts')
+def dashaccounts():
+    allfeedback = Feedback.query.all()
+    flash(f'Ledger updated successfully','success')
+    return render_template('dash-accounts.html', title='Feedback',allfeedback=allfeedback)
+
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     form = Registration()
